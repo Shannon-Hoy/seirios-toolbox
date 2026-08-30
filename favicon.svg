@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Seirios Solutions">
+  <rect width="64" height="64" rx="11" fill="#033E7D"/>
+  <circle cx="32" cy="32" r="19.5" fill="none" stroke="#c6af75" stroke-width="3.4"/>
+  <path d="M41.4 22.6 L34.9 32 L41.4 41.4 L32 34.9 L22.6 41.4 L29.1 32 L22.6 22.6 L32 29.1 Z" fill="#c6af75"/>
+  <path d="M32 1.5 L36.4 27.6 L62.5 32 L36.4 36.4 L32 62.5 L27.6 36.4 L1.5 32 L27.6 27.6 Z" fill="#c6af75"/>
+  <circle cx="32" cy="32" r="2.9" fill="#033E7D"/>
+</svg>
