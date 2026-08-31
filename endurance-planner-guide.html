@@ -55,7 +55,7 @@
 
 <h2>What this tool is</h2>
 <p>The Endurance Planner estimates where a crewed survey vessel can operate productively. A work area within fuel range may still be unusable if reaching it consumes most of the deployment. The tool turns that tradeoff into a picture: an interactive globe shaded by operational reach, a site checker for any point in the ocean, a survey planner that prices a drawn polygon in deployments and calendar days, and a one click report suitable for printing.</p>
-<p>It is a single HTML file. Everything runs locally in the browser tab and nothing you load is ever uploaded. Three optional live map layers and the web fonts need the internet; the rest works without it. It opens with a representative configuration; the first thing to do is set the numbers to the vessel actually under evaluation.</p>
+<p>It is a single HTML file. Everything runs locally in the browser tab, nothing is uploaded anywhere, and it works offline apart from three optional live map layers. It opens with a representative configuration; the first thing to do is set the numbers to the vessel actually under evaluation.</p>
 
 <h2>The core idea</h2>
 <p>The model is deliberately simple so results can be checked by hand. The vessel transits at a set speed, so one transit day covers a fixed distance. Each deployment runs a fixed number of days port to port, less any weather margin held back. A minimum share of each deployment, 50% by default, must be spent on station for the deployment to count as productive. Whatever remains is the transit allowance, capped by fuel range. Every point in the ocean is then scored against its nearest ports along great circle tracks, and the globe is shaded with one of four outcomes:</p>

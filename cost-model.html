@@ -4,12 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Survey Vessel Cost Model</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22 width=%2264%22 height=%2264%22 role=%22img%22 aria-label=%22Seirios Solutions%22><rect width=%2264%22 height=%2264%22 rx=%2211%22 fill=%22#033E7D%22/><circle cx=%2232%22 cy=%2232%22 r=%2219.5%22 fill=%22none%22 stroke=%22#c6af75%22 stroke-width=%223.4%22/><path d=%22M41.4 22.6 L34.9 32 L41.4 41.4 L32 34.9 L22.6 41.4 L29.1 32 L22.6 22.6 L32 29.1 Z%22 fill=%22#c6af75%22/><path d=%22M32 1.5 L36.4 27.6 L62.5 32 L36.4 36.4 L32 62.5 L27.6 36.4 L1.5 32 L27.6 27.6 Z%22 fill=%22#c6af75%22/><circle cx=%2232%22 cy=%2232%22 r=%222.9%22 fill=%22#033E7D%22/></svg>">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC+0lEQVR4nO2Xy27TQBSG/3NmnMS5NqRQlUJE6QIWCAFSl1S8AwsknoFXYMWWt2DNmhUsKrFAgIQAgcpVpdya3uK0iRPbM4dFHCkqTkuiygiJXxppZFvzfz6XGZswJLV0W5CCzPIdGsw5bfP9Xpy2+X4I+hvmw+LDH/kPkCzNCE9W7BoAEDBxGscGGJhVXNk+PyNfAYA4TQDqm81WbKNelV4MZdMEsABwegredNGqSY0nBhAhIkDmKhKVctAAhIjSSQERRLFEAtBc1WbcDBwAFBlxFCPsw0AwRlEmAlB/IcsEoxiRYkRaScAEs1i3L7MafjGLLCxEMaKrC+aJoxACIBFQfwmAiGQwxgKQ/kJsBcpYaGOhI0MZY6HfNbh+czF8crwopRNllG8thY+9LrnWQjkKvWEzEaHBGAWQuBVPubI1XcDWTFmaJ8rSnSnBThfEOZa3bikr7tmanc9mOKc1I6MV1r1g11XiGosoEO75ATqej92NNnnfmtx53yD1+jvPfdmh+f1eOomqkpfmqWPYPlmRXq0gKGXFyWloI7CbbWpNF8mbK6jcnh8GDz7IM2OUtAOYpk+26RM3fcpst5H3fKq1unSmE6IQRMgmeSUCrG7xwuoWFpLunZuxb29cNh8dLcSs5dMGgntPnWujQnyYkovwtwJEqBlhvSqfL8zajbuPnIsKJvfwLVbe/FTl65ei5WpeNh2FQDFCRWSYYYlgBxvXKCVGQAQswG/NtNOh6v0Xeh4AFKPdM5Dna3zl1Q/uEiChQSZe4Y8bMRFglHZ7mBq8UWCo5/kkzLCRgWMFE+2K4+6EIgKIgDqBdDyflLXgw8J8lADEsdmOT61WF06fCiP7HIAQILW8NI4CAIiz22hRq9WNW4sOBCABqOlz7UgABl6rO9TdC8gFAPmDBBiRxBoZ/zSM072yzu5elwox1kEROFBjdUEfgBgQrKxzvR1SEYgrMzWA+GBp7NHs0OWJI/DvfhUfGcDwj2LaMst3iAeTv2EODKUgTYhhr18MrmAaNaX8HQAAAABJRU5ErkJggg==">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<rect width=%2264%22 height=%2264%22 rx=%2211%22 fill=%22#033E7D%22/><circle cx=%2232%22 cy=%2232%22 r=%2219.5%22 fill=%22none%22 stroke=%22#c6af75%22 stroke-width=%223.4%22/><path d=%22M41.4 22.6 L34.9 32 L41.4 41.4 L32 34.9 L22.6 41.4 L29.1 32 L22.6 22.6 L32 29.1 Z%22 fill=%22#c6af75%22/><path d=%22M32 1.5 L36.4 27.6 L62.5 32 L36.4 36.4 L32 62.5 L27.6 36.4 L1.5 32 L27.6 27.6 Z%22 fill=%22#c6af75%22/><circle cx=%2232%22 cy=%2232%22 r=%222.9%22 fill=%22#033E7D%22/></svg>">
 <style>
   :root {
     --navy: #0b3d66; --navy-dark: #072a47; --blue: #1a6fb5; --teal: #0e7f8c;
     --bg: #f2f6f9; --card: #ffffff; --ink: #1c2b36; --muted: #5b7183;
     --ok: #1e7f4f; --warn: #a05a00; --err: #b3372f; --line: #d8e2ea;
+    --gold: #c6af75; --gold-deep: #8f7838;
   }
   * { box-sizing: border-box; }
   body { margin: 0; font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; background: var(--bg); color: var(--ink); }
@@ -108,6 +112,20 @@ header{position:relative;overflow:hidden;color:#fff;padding:26px 28px 22px;
   details.cardfold > summary::before { content: "\25B8"; display: inline-block; margin-right: 7px; transition: transform .15s; }
   details.cardfold[open] > summary::before { transform: rotate(90deg); }
   #chart { width: 100%; margin-top: 14px; }
+  .lede { font-size: 13.5px; color: var(--muted); margin: 2px 0 14px; }
+  .twoup { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  @media (max-width: 900px) { .twoup { grid-template-columns: 1fr; } }
+  .halfcard { position: relative; border: 1px solid var(--line); border-radius: 10px; padding: 18px 18px 14px; background: #fbfdfe; }
+  .halfcard h3 { margin: 0 0 6px; font-size: 15px; color: var(--navy); }
+  .halfcard p { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
+  .halfcard p.src { border-left: 2px solid var(--gold); padding-left: 10px; }
+  .halfcard textarea { margin-top: 10px; }
+  .stepnum { position: absolute; top: -11px; left: 16px; width: 24px; height: 24px; border-radius: 50%;
+             background: var(--navy); color: #fff; font-size: 13px; font-weight: 700;
+             display: flex; align-items: center; justify-content: center; }
+  .sm.primary { background: var(--gold); border-color: var(--gold); color: #22314a; font-weight: 700; }
+  #configNote.warn { background: #fff8e6; border: 1px solid var(--gold); border-left: 3px solid var(--gold);
+                     border-radius: 8px; padding: 12px 15px; color: var(--ink); font-size: 13.5px; }
   a.dl, button.dl { display: inline-block; margin: 12px 10px 0 0; font-weight: 600; background: var(--ok); color: #fff; text-decoration: none; border: 0; border-radius: 8px; padding: 10px 20px; font-size: 14px; cursor: pointer; font-family: inherit; }
   a.dl.alt, button.dl.alt { background: var(--teal); }
   footer { text-align: center; color: var(--muted); font-size: 12px; padding: 24px 0 40px; }
@@ -129,8 +147,42 @@ header{position:relative;overflow:hidden;color:#fff;padding:26px 28px 22px;
 <main>
 
   <div class="card">
-    <h2>Start Here: Import from the Endurance Planner</h2>
-    <details class="start" open>
+    <h2>Start Here</h2>
+    <p class="lede">The model needs two things and they come from different places. <b>The survey</b> says how big the job is and how many days it takes, and comes from the Endurance Planner. <b>The vessel and rates</b> say what a day costs, and come from a configuration file. Neither is filled in for you.</p>
+
+    <div class="twoup">
+      <section class="halfcard">
+        <div class="stepnum">1</div>
+        <h3>The survey</h3>
+        <p>Area, mapping and transit days, port days, deployments, port calls and depth bands.</p>
+        <p class="src">From the <b>Endurance Planner</b>. Draw or import the area there and press Send to Cost Model. On the website that opens this page with the scenario already loaded and there is nothing else to do. Offline, use the file it saves or the text it copies.</p>
+        <div class="flexrow">
+          <label class="sm" style="display:inline-block">Import survey scenario <input type="file" id="loadScenario" accept=".json" style="display:none"></label>
+          <button class="sm" id="applyScenario">Apply pasted JSON</button>
+          <button class="sm" id="clearScenario">Clear</button>
+          <button class="sm" id="copyScenario">Copy current scenario</button>
+          <button class="sm" id="pasteScenario" style="display:none">paste</button>
+        </div>
+        <div id="applyNote" style="margin-top:10px"></div>
+        <textarea id="scenarioBox" placeholder='Paste scenario_cost_model.json here, or use Import survey scenario'></textarea>
+      </section>
+
+      <section class="halfcard">
+        <div class="stepnum">2</div>
+        <h3>The vessel and rates</h3>
+        <p>Speeds, fuel curve, every low and high rate on every cost line, and the operating assumptions.</p>
+        <p class="src">From a <b>configuration file</b>. This tool ships with all of it at zero, so load a configuration you have been given, or type your own rates into Cost Lines below and save a configuration for next time.</p>
+        <div class="flexrow">
+          <label class="sm primary" style="display:inline-block">Load configuration <input type="file" id="loadProfile" accept=".json" style="display:none"></label>
+          <button class="sm" id="saveProfile">Save configuration</button>
+        </div>
+        <div id="configNote" class="hint warn" style="margin-top:10px"></div>
+      </section>
+    </div>
+
+    <div id="figStrip" class="flexrow" style="gap:12px;margin-top:14px"></div>
+
+    <details class="start">
       <summary>New to this tool? Four steps.</summary>
       <ol>
         <li><b>Get the time first.</b> Plan the survey in the Endurance Planner, which works out mapping days, transits and deployments from the sonar and the water depth, then press Send to Cost Model there.</li>
@@ -139,17 +191,6 @@ header{position:relative;overflow:hidden;color:#fff;padding:26px 28px 22px;
         <li><b>Read the results, then export.</b> The two headline numbers are cost per square kilometre for the whole campaign and for survey time alone. Open print report for a document someone else can audit, or download the xlsx to see every formula.</li>
       </ol>
     </details>
-    <p style="font-size:13.5px;color:var(--muted);margin:4px 0 0">The intended workflow is planner first, cost model second. In the Endurance Planner, draw or import the survey area and press <b>Send to Cost Model</b>. If you are working from the website, that opens this page in a new tab with the scenario already loaded, and there is nothing else to do. It also saves a file called scenario_cost_model.json and copies the same text to your clipboard, so if you are running the tools offline from your own files, press <b>Import scenario file</b> and choose that file, or paste the copied text into the box below and press <b>Apply pasted JSON</b>. <b>Clear</b> drops the scenario and hands the days back to you. It populates area, distance, speeds, mapping and transit days, port and weather days, the rotation delta, and calibrated depth bands. Everything can also be keyed in by hand below.</p>
-    <div class="flexrow">
-      <label class="sm" style="display:inline-block">Import scenario file <input type="file" id="loadScenario" accept=".json" style="display:none"></label>
-      <button class="sm" id="applyScenario">Apply pasted JSON</button>
-      <button class="sm" id="clearScenario">Clear</button>
-      <button class="sm" id="copyScenario">Copy current scenario JSON</button>
-      <button class="sm" id="pasteScenario" style="display:none">paste</button>
-    </div>
-    <div id="figStrip" class="flexrow" style="gap:12px"></div>
-    <div id="applyNote" style="margin-top:10px"></div>
-    <textarea id="scenarioBox" placeholder='Paste scenario_cost_model.json content here, or use Import scenario file'></textarea>
   </div>
 
   <div class="card">
@@ -159,12 +200,9 @@ header{position:relative;overflow:hidden;color:#fff;padding:26px 28px 22px;
     <details class="fold" open>
       <summary>Fuel curve (L/nm by speed and hotel load)</summary>
       <div id="fuelTable"></div>
-      <div class="hint">Burn rates interpolate bilinearly between the table cells. The default table is the Ocean Mapper curve with 5% added wave resistance assumed. Edit any cell, or load a different vessel profile to swap the whole curve. The vessel profile carries fuel and speed only; survey productivity lives in the Endurance Planner.</div>
+      <div class="hint">Burn rates interpolate bilinearly between the table cells. The table ships empty. Type your vessel's figures in, or load a configuration to fill the whole curve at once. Survey productivity is not set here; it comes from the Endurance Planner.</div>
     </details>
-    <div class="flexrow">
-      <button class="sm" id="saveProfile">Save vessel profile (.json)</button>
-      <label class="sm" style="display:inline-block">Load vessel profile <input type="file" id="loadProfile" accept=".json" style="display:none"></label>
-    </div>
+    <div class="hint">A configuration carries the vessel's speeds and fuel curve, every rate on every cost line, and the operating assumptions. Load and save it from <b>Start Here</b> at the top of the page.</div>
     </details>
   </div>
 
@@ -268,23 +306,10 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 
 /* ================= vessel profile ================= */
 var VESSEL = {
-  name: "Ocean Mapper",
+  name: "Unconfigured vessel",
   speeds: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
   hotels: [0, 5, 10, 15, 20, 25, 30],
-  lnm: [
-    [0.0, 0.7, 1.3, 1.9, 2.5, 3.2, 3.8],
-    [0.2, 0.6, 1.0, 1.4, 1.8, 2.2, 2.7],
-    [0.4, 0.7, 1.0, 1.3, 1.6, 1.9, 2.2],
-    [0.7, 1.0, 1.2, 1.5, 1.7, 2.0, 2.2],
-    [1.2, 1.4, 1.7, 1.9, 2.1, 2.3, 2.5],
-    [2.0, 2.1, 2.3, 2.5, 2.7, 2.9, 3.0],
-    [2.9, 3.1, 3.3, 3.4, 3.6, 3.7, 3.9],
-    [3.9, 4.0, 4.1, 4.3, 4.4, 4.6, 4.7],
-    [5.3, 5.4, 5.6, 5.7, 5.8, 5.9, 6.1],
-    [7.2, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9],
-    [10.9, 11.0, 11.1, 11.2, 11.3, 11.4, 11.5]
-  ],
-  portBurnLpd: 300
+  lnm: [[0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]], portBurnLpd: 300
 };
 
 function interp1(xs, x) {
@@ -308,14 +333,14 @@ function burnLnm(speedKt, hotelKw) {
 
 /* ================= parameters ================= */
 var VPARAMS = [
-  { id: "vname",   label: "Vessel name",                 val: "Ocean Mapper", text: true },
+  { id: "vname",   label: "Vessel name",                 val: "Unconfigured vessel", text: true },
   { id: "sSpeed",  label: "Survey speed (kt)",           val: 8,   step: 0.5 },
   { id: "tSpeed",  label: "Transit speed (kt)",          val: 10,  step: 0.5 },
-  { id: "hotelS",  label: "Hotel load, survey (kW)",     val: 20,  step: 1 },
-  { id: "hotelT",  label: "Hotel load, transit (kW)",    val: 10,  step: 1 },
+  { id: "hotelS",  label: "Hotel load, survey (kW)",     val: 0,   step: 1 },
+  { id: "hotelT",  label: "Hotel load, transit (kW)",    val: 0,   step: 1 },
   { id: "burnS",   label: "Survey burn (L/nm)",          calc: true },
   { id: "burnT",   label: "Transit burn (L/nm)",         calc: true },
-  { id: "burnP",   label: "In-port burn (L/day)",      val: 300, step: 25 },
+  { id: "burnP",   label: "In-port burn (L/day)",      val: 0,   step: 25 },
   { id: "opYear",  label: "Operating days per year",   val: 150, step: 10 }
 ];
 var CPARAMS = [
@@ -338,7 +363,7 @@ var CPARAMS = [
   { id: "ga",      label: "Overhead & G&A (%)",          val: 0,     step: 1, hidden: true }
 ];
 
-var state = { params: {}, over: { tdays: null }, applied: null, planner: null, bands: null, transitNm: null, figs: null, markOn: { cont: false, ga: false } };
+var state = { params: {}, over: { tdays: null }, applied: null, planner: null, bands: null, transitNm: null, figs: null, markOn: { cont: false, ga: false }, configName: null };
 VPARAMS.concat(CPARAMS).forEach(function (p) { if (!p.calc) state.params[p.id] = p.val; });
 
 var BENCHMARKS = [];
@@ -404,47 +429,47 @@ var DRIVERS = {
 
 var SECTIONS = [
   { id: "labor", name: "LABOR", crew: true, items: [
-    { name: "Captain",                 driver: "total",    unit: "day",  lo: 600,  hi: 800,  on: true, svy: true, cLo: 1, cHi: 1, loc: "aboard" },
-    { name: "Second Captain / Mate",   driver: "total",    unit: "day",  lo: 450,  hi: 650,  on: true, svy: true, cLo: 1, cHi: 1, loc: "aboard" },
-    { name: "Mapping Support",         driver: "sea",      unit: "day",  lo: 600,  hi: 800,  on: true, svy: true, cLo: 2, cHi: 3, loc: "shore" },
-    { name: "Post-Processing",         driver: "proc",     unit: "hr",   lo: 50,   hi: 100,  on: true, svy: true, cLo: 1, cHi: 1, loc: "shore" },
-    { name: "Admin / Logistics",       driver: "campaign", unit: "lump", lo: 1500, hi: 3000, on: true, svy: true, cLo: 1, cHi: 1 }
+    { name: "Captain",                 driver: "total",    unit: "day",  lo: 0, hi: 0,  on: true, svy: true, cLo: 1, cHi: 1, loc: "aboard" },
+    { name: "Second Captain / Mate",   driver: "total",    unit: "day",  lo: 0, hi: 0,  on: true, svy: true, cLo: 1, cHi: 1, loc: "aboard" },
+    { name: "Mapping Support",         driver: "sea",      unit: "day",  lo: 0, hi: 0,  on: true, svy: true, cLo: 2, cHi: 3, loc: "shore" },
+    { name: "Post-Processing",         driver: "proc",     unit: "hr",   lo: 0, hi: 0,  on: true, svy: true, cLo: 1, cHi: 1, loc: "shore" },
+    { name: "Admin / Logistics",       driver: "campaign", unit: "lump", lo: 0, hi: 0, on: true, svy: true, cLo: 1, cHi: 1 }
   ]},
   { id: "fuel", name: "FUEL", items: [
-    { name: "Fuel, Survey Ops",        driver: "fuelS",    unit: "L",    lo: 0.90, hi: 1.20, on: true, svy: true },
-    { name: "Fuel, Transit",           driver: "fuelT",    unit: "L",    lo: 0.90, hi: 1.20, on: true, svy: false },
-    { name: "Generator / In-Port Fuel",driver: "portFuel", unit: "L",    lo: 0.90, hi: 1.20, on: true, svy: false },
-    { name: "Lube Oils / Fluids",      driver: "campaign", unit: "lump", lo: 500,  hi: 1000, on: true, svy: true }
+    { name: "Fuel, Survey Ops",        driver: "fuelS",    unit: "L",    lo: 0, hi: 0, on: true, svy: true },
+    { name: "Fuel, Transit",           driver: "fuelT",    unit: "L",    lo: 0, hi: 0, on: true, svy: false },
+    { name: "Generator / In-Port Fuel",driver: "portFuel", unit: "L",    lo: 0, hi: 0, on: true, svy: false },
+    { name: "Lube Oils / Fluids",      driver: "campaign", unit: "lump", lo: 0, hi: 0, on: true, svy: true }
   ]},
   { id: "cons", name: "CONSUMABLES", items: [
-    { name: "XBT Probes",              driver: "xbt",      unit: "ea",   lo: 65,   hi: 85,   on: true, svy: true, altXbt: true },
-    { name: "Starlink / Comms (per unit)", driver: "total", unit: "day",  lo: 30,   hi: 60,   on: true, svy: true, cLo: 2, cHi: 2 },
-    { name: "Food / Victualing",       driver: "pobdays",  unit: "p-day",lo: 25,   hi: 40,   on: true, svy: true },
-    { name: "Misc Operational",        driver: "campaign", unit: "lump", lo: 500,  hi: 1500, on: true, svy: true }
+    { name: "XBT Probes",              driver: "xbt",      unit: "ea",   lo: 0, hi: 0,   on: true, svy: true, altXbt: true },
+    { name: "Starlink / Comms (per unit)", driver: "total", unit: "day",  lo: 0, hi: 0,   on: true, svy: true, cLo: 2, cHi: 2 },
+    { name: "Food / Victualing",       driver: "pobdays",  unit: "p-day",lo: 0, hi: 0,   on: true, svy: true },
+    { name: "Misc Operational",        driver: "campaign", unit: "lump", lo: 0, hi: 0, on: true, svy: true }
   ]},
   { id: "soft", name: "SOFTWARE & DATA", items: [
-    { name: "Mapping software (annual, itemized)", driver: "total", unit: "yr", lo: 8000, hi: 9000, on: true, svy: true,
-      sub: [{ name: "Qimera", lo: 4000, hi: 4000 }, { name: "ArcGIS Pro", lo: 4000, hi: 5000 }] },
-    { name: "Other software (autonomy, nav, subscriptions)", driver: "total", unit: "yr", lo: 3000, hi: 12000, on: true, svy: true },
-    { name: "Cloud Storage & Egress",  driver: "total",    unit: "day",  lo: 20,   hi: 60,   on: true, svy: true }
+    { name: "Mapping software (annual, itemized)", driver: "total", unit: "yr", lo: 0, hi: 0, on: true, svy: true,
+      sub: [{ name: "Qimera", lo: 0, hi: 0 }, { name: "ArcGIS Pro", lo: 0, hi: 0 }] },
+    { name: "Other software (autonomy, nav, subscriptions)", driver: "total", unit: "yr", lo: 0, hi: 0, on: true, svy: true },
+    { name: "Cloud Storage & Egress",  driver: "total",    unit: "day",  lo: 0, hi: 0,   on: true, svy: true }
   ]},
   { id: "trav", name: "TRAVEL & LOGISTICS", items: [
-    { name: "Crew Rotation Travel",    driver: "trips",    unit: "trip",   lo: 800, hi: 1500, on: true, svy: false },
-    { name: "Freight / Shipping",      driver: "campaign", unit: "lump",   lo: 500, hi: 2000, on: true, svy: false },
-    { name: "Port Fees (berth, water, waste, agency)", driver: "calls", unit: "call", lo: 1000, hi: 2500, on: true, svy: false },
-    { name: "Mobilization / Demobilization (portable systems only)", driver: "campaign", unit: "lump", lo: 0, hi: 15000, on: false, svy: false },
-    { name: "Deliverable Media & Shipping",  driver: "campaign", unit: "lump", lo: 500,  hi: 2000,  on: true, svy: true }
+    { name: "Crew Rotation Travel",    driver: "trips",    unit: "trip",   lo: 0, hi: 0, on: true, svy: false },
+    { name: "Freight / Shipping",      driver: "campaign", unit: "lump",   lo: 0, hi: 0, on: true, svy: false },
+    { name: "Port Fees (berth, water, waste, agency)", driver: "calls", unit: "call", lo: 0, hi: 0, on: true, svy: false },
+    { name: "Mobilization / Demobilization (portable systems only)", driver: "campaign", unit: "lump", lo: 0, hi: 0, on: false, svy: false },
+    { name: "Deliverable Media & Shipping",  driver: "campaign", unit: "lump", lo: 0, hi: 0,  on: true, svy: true }
   ]},
   { id: "fixed", name: "FIXED COSTS (PRORATED)", items: [
-    { name: "Insurance (Hull + P&I)",        driver: "total", unit: "yr",  lo: 60000, hi: 150000, on: true, svy: true },
-    { name: "Maintenance / Drydock Reserve", driver: "total", unit: "yr",  lo: 75000, hi: 200000, on: true, svy: true },
-    { name: "Spares & Sonar Support (service agreement)", driver: "total", unit: "yr", lo: 30000, hi: 60000, on: true, svy: true },
-    { name: "Safety Equipment Servicing",    driver: "total", unit: "yr",  lo: 6000,  hi: 15000, on: true, svy: true },
-    { name: "Class, Flag & Registry Fees",   driver: "total", unit: "yr",  lo: 8000,  hi: 20000, on: true, svy: true }
+    { name: "Insurance (Hull + P&I)",        driver: "total", unit: "yr",  lo: 0, hi: 0, on: true, svy: true },
+    { name: "Maintenance / Drydock Reserve", driver: "total", unit: "yr",  lo: 0, hi: 0, on: true, svy: true },
+    { name: "Spares & Sonar Support (service agreement)", driver: "total", unit: "yr", lo: 0, hi: 0, on: true, svy: true },
+    { name: "Safety Equipment Servicing",    driver: "total", unit: "yr",  lo: 0, hi: 0, on: true, svy: true },
+    { name: "Class, Flag & Registry Fees",   driver: "total", unit: "yr",  lo: 0, hi: 0, on: true, svy: true }
   ]},
   { id: "capex", name: "CAPITAL & HARDWARE", items: [
-    { name: "Vessel Capital Recovery",  driver: "total", unit: "day", lo: 2500, hi: 4000, on: false, svy: true },
-    { name: "Sonar Suite Amortization", driver: "total", unit: "day", lo: 700,  hi: 1200,  on: false, svy: true }
+    { name: "Vessel Capital Recovery",  driver: "total", unit: "day", lo: 0, hi: 0, on: false, svy: true },
+    { name: "Sonar Suite Amortization", driver: "total", unit: "day", lo: 0, hi: 0,  on: false, svy: true }
   ]}
 ];
 
@@ -1302,23 +1327,82 @@ function applyScenario(obj) {
   buildGrid("vgrid", VPARAMS); buildGrid("pgrid", CPARAMS); wireOverrideBoxes();
   refresh();
 }
+/* A configuration is everything that is a judgment call: the vessel's physical
+   curve, every rate, and the operating parameters. The published tool ships with
+   these at zero so nobody inherits someone else's numbers by accident. */
+var CONFIG_PARAMS = ["sSpeed", "tSpeed", "hotelS", "hotelT", "burnP", "opYear",
+                     "xbtRate", "procLo", "procHi", "procSea", "cont", "ga", "pob"];
 function vesselJson() {
+  var lines = [];
+  SECTIONS.forEach(function (sec) {
+    sec.items.forEach(function (it) {
+      lines.push({ section: sec.name, name: it.name, lo: it.lo, hi: it.hi,
+                   on: !!it.on, n: it.n, qty: it.qty, aboard: !!it.aboard });
+    });
+  });
+  var params = {};
+  CONFIG_PARAMS.forEach(function (k) { params[k] = P(k); });
   return JSON.stringify({
-    schema: "seirios.costmodel.vessel.v1",
+    schema: "seirios.costmodel.config.v1",
     name: VESSEL.name,
     speeds_kt: VESSEL.speeds, hotel_kw: VESSEL.hotels, l_per_nm: VESSEL.lnm,
-    in_port_burn_lpd: P("burnP")
+    in_port_burn_lpd: P("burnP"),
+    params: params,
+    lines: lines
   }, null, 2);
 }
 function applyVessel(obj) {
-  if (!obj || obj.schema !== "seirios.costmodel.vessel.v1") throw new Error("Not a vessel profile JSON.");
+  if (!obj || (obj.schema !== "seirios.costmodel.config.v1" && obj.schema !== "seirios.costmodel.vessel.v1"))
+    throw new Error("Not a configuration JSON.");
   VESSEL.name = String(obj.name || "Vessel");
   if (Array.isArray(obj.speeds_kt)) VESSEL.speeds = obj.speeds_kt.map(Number);
   if (Array.isArray(obj.hotel_kw)) VESSEL.hotels = obj.hotel_kw.map(Number);
   if (Array.isArray(obj.l_per_nm)) VESSEL.lnm = obj.l_per_nm.map(function (r) { return r.map(Number); });
   if (typeof obj.in_port_burn_lpd === "number") state.params.burnP = obj.in_port_burn_lpd;
+  if (obj.params) CONFIG_PARAMS.forEach(function (k) {
+    if (typeof obj.params[k] === "number") state.params[k] = obj.params[k];
+  });
+  if (Array.isArray(obj.lines)) {
+    var byName = {};
+    obj.lines.forEach(function (r) { byName[r.section + "\u0000" + r.name] = r; });
+    SECTIONS.forEach(function (sec) {
+      sec.items.forEach(function (it) {
+        var r = byName[sec.name + "\u0000" + it.name];
+        if (!r) return;
+        if (typeof r.lo === "number") it.lo = r.lo;
+        if (typeof r.hi === "number") it.hi = r.hi;
+        if (typeof r.on === "boolean") it.on = r.on;
+        if (typeof r.n === "number") it.n = r.n;
+        if (typeof r.qty === "number") it.qty = r.qty;
+        if (typeof r.aboard === "boolean") it.aboard = r.aboard;
+      });
+    });
+  }
   state.params.vname = VESSEL.name;
-  buildGrid("vgrid", VPARAMS); renderFuelTable(); refresh();
+  state.configName = String(obj.name || "Configuration");
+  buildGrid("vgrid", VPARAMS); buildGrid("pgrid", CPARAMS); wireOverrideBoxes();
+  renderFuelTable(); renderSections(); refresh(); noteConfig();
+}
+/* tells the user plainly whether any rates are loaded */
+function ratesLoaded() {
+  var any = false;
+  SECTIONS.forEach(function (sec) { sec.items.forEach(function (it) {
+    if (it.on && ((Number(it.lo) || 0) > 0 || (Number(it.hi) || 0) > 0)) any = true;
+  }); });
+  return any;
+}
+function noteConfig() {
+  var el = document.getElementById("configNote");
+  if (!el) return;
+  if (ratesLoaded()) {
+    el.className = "hint";
+    el.innerHTML = "Configuration in use: <b>" + (state.configName || VESSEL.name) +
+      "</b>. Save it to keep your rates, or load another to swap them all at once.";
+  } else {
+    el.className = "hint warn";
+    el.innerHTML = "<b>No rates loaded.</b> This tool ships with every rate and fuel figure at zero, " +
+      "so the results stay at zero until you either load a configuration file or type your own rates into the cost lines below.";
+  }
 }
 function downloadText(name, text, mime) {
   var blob = new Blob([text], { type: mime || "application/json" });
@@ -1892,6 +1976,7 @@ function wireDayBench() {
 }
 function init() {
   wireDayBench();
+  setTimeout(function () { try { noteConfig(); } catch (e) {} }, 0);
   try {
     var pending = localStorage.getItem("seiriosCostScenario");
     if (pending) {

@@ -7,6 +7,7 @@
 <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC+0lEQVR4nO2Xy27TQBSG/3NmnMS5NqRQlUJE6QIWCAFSl1S8AwsknoFXYMWWt2DNmhUsKrFAgIQAgcpVpdya3uK0iRPbM4dFHCkqTkuiygiJXxppZFvzfz6XGZswJLV0W5CCzPIdGsw5bfP9Xpy2+X4I+hvmw+LDH/kPkCzNCE9W7BoAEDBxGscGGJhVXNk+PyNfAYA4TQDqm81WbKNelV4MZdMEsABwegredNGqSY0nBhAhIkDmKhKVctAAhIjSSQERRLFEAtBc1WbcDBwAFBlxFCPsw0AwRlEmAlB/IcsEoxiRYkRaScAEs1i3L7MafjGLLCxEMaKrC+aJoxACIBFQfwmAiGQwxgKQ/kJsBcpYaGOhI0MZY6HfNbh+czF8crwopRNllG8thY+9LrnWQjkKvWEzEaHBGAWQuBVPubI1XcDWTFmaJ8rSnSnBThfEOZa3bikr7tmanc9mOKc1I6MV1r1g11XiGosoEO75ATqej92NNnnfmtx53yD1+jvPfdmh+f1eOomqkpfmqWPYPlmRXq0gKGXFyWloI7CbbWpNF8mbK6jcnh8GDz7IM2OUtAOYpk+26RM3fcpst5H3fKq1unSmE6IQRMgmeSUCrG7xwuoWFpLunZuxb29cNh8dLcSs5dMGgntPnWujQnyYkovwtwJEqBlhvSqfL8zajbuPnIsKJvfwLVbe/FTl65ei5WpeNh2FQDFCRWSYYYlgBxvXKCVGQAQswG/NtNOh6v0Xeh4AFKPdM5Dna3zl1Q/uEiChQSZe4Y8bMRFglHZ7mBq8UWCo5/kkzLCRgWMFE+2K4+6EIgKIgDqBdDyflLXgw8J8lADEsdmOT61WF06fCiP7HIAQILW8NI4CAIiz22hRq9WNW4sOBCABqOlz7UgABl6rO9TdC8gFAPmDBBiRxBoZ/zSM072yzu5elwox1kEROFBjdUEfgBgQrKxzvR1SEYgrMzWA+GBp7NHs0OWJI/DvfhUfGcDwj2LaMst3iAeTv2EODKUgTYhhr18MrmAaNaX8HQAAAABJRU5ErkJggg==">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<rect width=%2264%22 height=%2264%22 rx=%2211%22 fill=%22#033E7D%22/><circle cx=%2232%22 cy=%2232%22 r=%2219.5%22 fill=%22none%22 stroke=%22#c6af75%22 stroke-width=%223.4%22/><path d=%22M41.4 22.6 L34.9 32 L41.4 41.4 L32 34.9 L22.6 41.4 L29.1 32 L22.6 22.6 L32 29.1 Z%22 fill=%22#c6af75%22/><path d=%22M32 1.5 L36.4 27.6 L62.5 32 L36.4 36.4 L32 62.5 L27.6 36.4 L1.5 32 L27.6 27.6 Z%22 fill=%22#c6af75%22/><circle cx=%2232%22 cy=%2232%22 r=%222.9%22 fill=%22#033E7D%22/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&family=Spectral:wght@400;600;700&display=swap" rel="stylesheet">
@@ -20,13 +21,28 @@
   }
   * { box-sizing: border-box; }
   body { margin: 0; font-family: "Mulish", "Segoe UI", system-ui, -apple-system, Arial, sans-serif; background: var(--bg); color: var(--ink); }
-  header { background: linear-gradient(135deg, var(--navy-dark), var(--navy) 60%, var(--blue)); color: #fff; padding: 22px 24px 18px; }
-  .brand { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-direction: row-reverse; }
-  .brand .toplogo { height: 64px; display: block; flex: 0 0 auto; }
-  .brand .brandtext { min-width: 0; }
-  @media (max-width: 760px) { .brand { flex-direction: column-reverse; align-items: flex-start; gap: 10px; } .brand .toplogo { height: 44px; } }
-  .brand h1 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: .3px; }
-  .brand .tagline { font-size: 13px; opacity: .85; margin-top: 4px; max-width: 880px; line-height: 1.45; }
+header{position:relative;overflow:hidden;color:#fff;padding:26px 28px 22px;
+    /* deep navy on the right so the gold logo reads; the blue bloom sits low-left, away from it */
+    background:
+      radial-gradient(120% 150% at 8% 130%, rgba(113,168,196,.55) 0%, rgba(113,168,196,0) 58%),
+      linear-gradient(118deg,#001261 0%,#033E7D 58%,#02306a 100%);
+    border-bottom:3px solid #c6af75;}
+  header .brand{position:relative;z-index:1;max-width:1320px;margin:0 auto;display:flex;align-items:center;
+    justify-content:space-between;gap:28px;flex-direction:row-reverse}
+  header .toplogo{height:62px;display:block;flex:0 0 auto;
+    filter:drop-shadow(0 1px 6px rgba(0,0,0,.45));}   /* lifts the gold off the navy */
+  header .brandtext{min-width:0}
+  header h1{margin:0;font-size:23px;font-weight:800;letter-spacing:.2px;line-height:1.2}
+  header .co{font-size:12px;opacity:.78;margin-top:3px;letter-spacing:.5px;text-transform:uppercase}
+  header .tagline{font-size:13.5px;opacity:.92;margin-top:9px;max-width:78ch;line-height:1.5}
+  header .backlink{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.03em;
+    color:#e6d6ac;text-decoration:none;border-bottom:1px solid rgba(230,214,172,.45);padding-bottom:1px}
+  header .backlink:hover{color:#fff;border-bottom-color:#fff}
+  @media (max-width:760px){
+    header{padding:20px 18px 18px}
+    header .brand{flex-direction:column-reverse;align-items:flex-start;gap:12px}
+    header .toplogo{height:44px}
+  }
   main { max-width: 1320px; margin: 0 auto; padding: 18px 16px 40px; }
   .layout { display: grid; grid-template-columns: 320px 1fr; gap: 16px; align-items: start; }
   @media (min-width: 961px) {
@@ -54,7 +70,18 @@
   input[type=range] { width: 100%; accent-color: var(--navy); }
   .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .helpbox { margin-top: 5px; padding: 7px 9px; border: 1px solid var(--line); border-left: 3px solid var(--blue);
+    border-radius: 7px; background: rgba(113,168,196,.10); color: var(--muted); font-size: 11px; line-height: 1.5; }
+  span.qmark:hover { border-color: var(--blue); color: var(--blue); background: rgba(113,168,196,.15); }
+  span.qmark { cursor: pointer; display: inline-flex; align-items: center; justify-content: center; width: 13px; height: 13px; margin-left: 5px;
+    border-radius: 50%; border: 1px solid var(--line); color: var(--muted); font-size: 9px; font-weight: 700; vertical-align: middle; }
+  details.startfold { margin: 2px 0 10px; }
+  details.startfold > summary { cursor: pointer; font-size: 11.5px; font-weight: 700; color: var(--blue); }
+  details.startfold ol { margin: 7px 0 0; padding-left: 18px; font-size: 11.5px; line-height: 1.55; color: var(--muted); }
+  details.startfold ol li { margin-bottom: 4px; }
   .hint { font-size: 11px; color: var(--muted); margin-top: 6px; line-height: 1.45; }
+  details.ovhelp { grid-column: 1 / -1; margin-top: 2px; }
+  details.ovhelp summary { font-size: 11px; color: var(--blue); cursor: pointer; user-select: none; }
   .kv { font-size: 12px; color: var(--ink); margin-top: 8px; padding: 8px 10px; background: #eef4f8; border-radius: 8px; line-height: 1.55; }
   .check { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink); margin-top: 8px; cursor: pointer; }
   .check input { accent-color: var(--navy); }
@@ -83,7 +110,11 @@
   #overlay { pointer-events: none; }
   #loadmsg { position: absolute; left: 0; right: 0; top: 46%; text-align: center; color: #9fc3de; font-size: 13px; letter-spacing: .4px; pointer-events: none; }
   #netbanner { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); background: rgba(163,51,39,.94); color: #fff; font-size: 12px; padding: 6px 14px; border-radius: 999px; z-index: 5; max-width: 92%; text-align: center; }
-  .globe-tools { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; padding: 10px 12px; background: #04101c; border-top: 1px solid #0d2438; }
+  .globe-tools { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; padding: 10px 12px; background: #04101c; border-top: 1px solid #0d2438; }
+  .tool-group { display: flex; gap: 7px; align-items: center; flex-wrap: wrap; padding: 5px 10px 5px 9px; border: 1px solid #10293f; border-radius: 10px; background: rgba(10,32,51,.35); }
+  .sm-inline { font: inherit; font-size: 12px; padding: 4px 10px; border-radius: 7px; border: 1px solid #1E6F9D; background: #fff; color: #033E7D; cursor: pointer; }
+  .sm-inline:hover { background: #eef6fb; }
+  .tg-label { font-size: 10px; letter-spacing: .13em; text-transform: uppercase; color: #6f92ac; margin-right: 3px; user-select: none; }
   .globe-tools button { font: inherit; font-size: 12.5px; padding: 6px 12px; border-radius: 8px; border: 1px solid #1c3c58; background: #0a2033; color: #cfe4f5; cursor: pointer; }
   .globe-tools button:hover { border-color: var(--blue); }
   .globe-tools button.active { border-color: var(--gold-bright); color: var(--gold-bright); }
@@ -139,28 +170,6 @@
 
   footer { max-width: 1320px; margin: 26px auto 0; padding: 16px; text-align: center; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); line-height: 1.6; }
 </style>
-<style id="letterhead">
-  /* letterhead, matching index.html */
-  header{position:relative;overflow:hidden;color:#fff;padding:26px 28px 22px;
-    background:
-      radial-gradient(120% 150% at 8% 130%, rgba(113,168,196,.55) 0%, rgba(113,168,196,0) 58%),
-      linear-gradient(118deg,#001261 0%,#033E7D 58%,#02306a 100%);
-    border-bottom:3px solid #c6af75;}
-  header .brand{position:relative;z-index:1;max-width:1180px;margin:0 auto;display:flex;align-items:center;
-    justify-content:space-between;gap:28px;flex-direction:row-reverse}
-  header .brand .toplogo{height:62px;display:block;flex:0 0 auto;filter:drop-shadow(0 1px 6px rgba(0,0,0,.45));}
-  header .brandtext{min-width:0}
-  header .brand h1{margin:0;font-size:23px;font-weight:800;letter-spacing:.2px;line-height:1.2;color:#fff}
-  header .brand .co{font-size:12px;opacity:.78;margin-top:3px;letter-spacing:.5px;text-transform:uppercase}
-  
-  header .brand .backlink{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.03em;
-    color:#e6d6ac;text-decoration:none;border-bottom:1px solid rgba(230,214,172,.45);padding-bottom:1px}
-  header .brand .backlink:hover{color:#fff;border-bottom-color:#fff}
-  header .brand .tagline{font-size:13.5px;opacity:.92;margin-top:9px;max-width:78ch;line-height:1.5}
-  @media (max-width:760px){ header{padding:20px 18px 18px}
-    header .brand{flex-direction:column-reverse;align-items:flex-start;gap:12px}
-    header .brand .toplogo{height:44px} }
-</style>
 </head>
 <body>
 <header>
@@ -168,9 +177,9 @@
     <img class="toplogo" src="data:image/png;base64,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" alt="Seirios Solutions">
     <div class="brandtext">
     <h1>Endurance Planner</h1>
-    <div class="co">Vessel endurance, reach, and survey planning &middot; internal tool</div>
+    <div class="co">Seirios Solutions, LLC</div>
     <div class="tagline">Where can an endurance limited deepwater vessel map economically? Live GEBCO and NOAA NCEI layers show what is already measured and where the gaps are. The red line is the efficiency limit for out and back deployments: beyond it, transit eats more of the deployment than your minimum allows. The white line, when turned on, is the US EEZ from Marine Regions. Draw a survey area to get a deployment estimate. All shading applies to ocean only.</div>
-      <a class="backlink" href="index.html">&larr; Ocean Mapping Toolbox</a>
+    <a class="backlink" href="index.html">&larr; Ocean Mapping Toolbox</a>
     </div>
   </div>
 </header>
@@ -222,6 +231,15 @@
 
     <div class="panel">
       <h2>Survey production</h2>
+      <details class="startfold">
+        <summary>How to plan a survey here</summary>
+        <ol>
+          <li><b>Get an area on the globe.</b> Press <b>Draw area</b> and click at least three points, or press <b>Import GeoJSON</b> to load a footprint or polygon from a file.</li>
+          <li><b>Choose how swath is worked out.</b> <b>From depth (sonar curve)</b> is the realistic setting: it takes the swath from the selected sonar at the actual water depth under the polygon. <b>Manual swath</b> holds one width everywhere and will misprice any survey where depth varies.</li>
+          <li><b>Set overlap, speed and the rotation.</b> Overlap and survey speed drive the line plan; deployment length, port turnaround and weather margin drive the calendar.</li>
+          <li><b>Read the survey report,</b> then <b>Export report</b> for a document, or <b>Send to Cost Model</b> to price it. For a footprint with several areas, add each one to the campaign to total them.</li>
+        </ol>
+      </details>
       <div class="row3">
         <div>
           <label for="mapspeed">Survey speed (kn)</label>
@@ -236,6 +254,7 @@
           <input type="number" id="turnaround" value="2" min="0" max="30" step="0.5">
         </div>
       </div>
+      <div id="swModeNote" style="display:none;margin:10px 0 2px;padding:8px 10px;border:1px solid #c6af75;border-left:4px solid #c6af75;border-radius:8px;background:#fdfaf2;color:#5a4a22;font-size:11.5px;line-height:1.5"></div>
       <label style="margin-top:12px">Swath input</label>
       <label class="check" style="margin-top:4px"><input type="radio" name="swmode" id="swManual" checked> Manual swath</label>
       <label class="check"><input type="radio" name="swmode" id="swDepth"> From depth (sonar curve)</label>
@@ -245,9 +264,35 @@
           <input type="number" id="swath" value="10" min="0.5" max="60" step="0.5">
         </div>
         <div>
-          <label for="overlap">Overlap (%)</label>
-          <input type="number" id="overlap" value="20" min="0" max="60" step="5">
+          <label for="realiz">Coverage realization (%)</label>
+          <input type="number" id="realiz" value="85" min="20" max="100" step="5">
         </div>
+        <div>
+          <label for="overlap" title="Pairwise overlap between adjacent lines: spacing = swath x (1 - overlap). NOAA-style 20% is entered as 20.">Overlap (%)</label>
+          <input type="number" id="overlap" value="20" min="0" max="60" step="5" title="Pairwise overlap between adjacent lines: spacing = swath x (1 - overlap). NOAA-style 20% is entered as 20.">
+        </div>
+        <details class="ovhelp">
+          <summary>What does overlap mean?</summary>
+          <div class="hint">Overlap is the pairwise overlap between adjacent lines: line spacing = swath &#215; (1 &#8722; overlap). NOAA-style 20% overlap is entered as 20 here, never doubled for having a neighbor on each side; each shared strip is the full overlap percentage, counted once per line pair. The Cost Model's depth sweep uses the identical convention.</div>
+          <svg viewBox="0 0 640 118" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Overlap convention" style="width:100%;max-width:640px;height:auto;margin-top:4px">
+            <rect x="60" y="18" width="220" height="38" fill="#1E6F9D" opacity="0.30"/>
+            <rect x="236" y="18" width="220" height="38" fill="#0e7f8c" opacity="0.30"/>
+            <rect x="412" y="18" width="220" height="38" fill="#1E6F9D" opacity="0.30"/>
+            <rect x="236" y="18" width="44" height="38" fill="#a05a00" opacity="0.55"/>
+            <rect x="412" y="18" width="44" height="38" fill="#a05a00" opacity="0.55"/>
+            <line x1="170" y1="18" x2="170" y2="56" stroke="#033E7D" stroke-width="1.3" stroke-dasharray="4 3"/>
+            <line x1="346" y1="18" x2="346" y2="56" stroke="#033E7D" stroke-width="1.3" stroke-dasharray="4 3"/>
+            <line x1="522" y1="18" x2="522" y2="56" stroke="#033E7D" stroke-width="1.3" stroke-dasharray="4 3"/>
+            <line x1="60" y1="70" x2="280" y2="70" stroke="#5b7183"/>
+            <line x1="60" y1="66" x2="60" y2="74" stroke="#5b7183"/><line x1="280" y1="66" x2="280" y2="74" stroke="#5b7183"/>
+            <text x="170" y="84" font-size="10.5" fill="#5b7183" text-anchor="middle">swath w</text>
+            <line x1="170" y1="96" x2="346" y2="96" stroke="#033E7D"/>
+            <line x1="170" y1="92" x2="170" y2="100" stroke="#033E7D"/><line x1="346" y1="92" x2="346" y2="100" stroke="#033E7D"/>
+            <text x="258" y="112" font-size="10.5" fill="#033E7D" text-anchor="middle">spacing = w &#215; (1 &#8722; overlap)</text>
+            <text x="258" y="66" font-size="9.5" fill="#a05a00" text-anchor="middle">overlap &#215; w</text>
+            <text x="434" y="66" font-size="9.5" fill="#a05a00" text-anchor="middle">overlap &#215; w</text>
+          </svg>
+        </details>
       </div>
       <div id="rowDepth" style="display:none">
         <div class="row3">
@@ -346,15 +391,28 @@
         <div id="netbanner" hidden>You appear to be offline. Live GEBCO and NOAA layers cannot load. Reconnect, then click the failed badges to retry.</div>
       </div>
       <div class="globe-tools">
-        <button id="btnPacific">Pacific</button>
-        <button id="btnAtlantic">Atlantic</button>
-        <button id="btnIndian">Indian</button>
-        <button id="btnSpin">Pause spin</button>
-        <button id="btnMeasure">Measure</button>
-        <button id="btnArea">Draw area</button>
-        <button id="btnClear">Clear</button>
-        <button id="btnSnap">Add view</button>
-        <button id="btnExport">Export report</button>
+        <div class="tool-group">
+          <span class="tg-label">Views</span>
+          <button id="btnPacific">Pacific</button>
+          <button id="btnAtlantic">Atlantic</button>
+          <button id="btnIndian">Indian</button>
+          <button id="btnSpin">Pause spin</button>
+        </div>
+        <div class="tool-group">
+          <span class="tg-label">Survey</span>
+          <button id="btnMeasure">Measure</button>
+          <button id="btnArea">Draw area</button>
+          <button id="btnGeo">Import GeoJSON</button>
+          <button id="btnGeoPart" style="display:none"></button>
+          <input type="file" id="geoFile" accept=".geojson,.json" style="display:none">
+          <button id="btnClear">Clear</button>
+        </div>
+        <div class="tool-group">
+          <span class="tg-label">Export</span>
+          <button id="btnSnap">Add view</button>
+          <button id="btnExport">Export report</button>
+          <button id="btnSendCost">Send to Cost Model</button>
+        </div>
         <span class="map-hint">Drag to rotate. Scroll or pinch to zoom. Click water to check a site.</span>
       </div>
 
@@ -571,7 +629,8 @@ const params = () => ({
   depthm: +el('depthm').value || 4000,
   maxangle: Math.max(10, Math.min(75, +el('maxangle').value || 72)),
   lineturn: Math.max(0, +el('lineturn').value || 0),
-  turnaround: +el('turnaround').value || 0
+  turnaround: +el('turnaround').value || 0,
+  realiz: Math.max(20, Math.min(100, +el('realiz').value || 100)) / 100
 });
 /* EM124 2x2 achievable swath angle (deg per side) vs depth (m).
    Calibrated to operator data tips from the Kongsberg runtime coverage graph:
@@ -614,9 +673,9 @@ function effectiveSwath(P) {
   let base, angle = null;
   if (el('swDepth').checked) {
     angle = Math.min(curveAngleDeg(activeSonar().curve, P.depthm), P.maxangle);
-    base = 2 * P.depthm * Math.tan(angle * DEG) / 1000;
+    base = 2 * P.depthm * Math.tan(angle * DEG) / 1000 * P.realiz;
   } else {
-    base = P.swath;
+    base = P.swath * P.realiz;
   }
   const spacing = base * Math.max(0, 1 - P.overlap / 100);
   return { base, spacing, angle };
@@ -988,7 +1047,7 @@ function depthBinnedLines(ds, areaOceanKm2, P, curveOverride) {
     if (!w) continue;
     const d = (b + 0.5) * 250;
     const ang = Math.min(curveAngleDeg(curve, d), P.maxangle);
-    const sp = Math.max(0.15, 2 * d * Math.tan(ang * DEG) / 1000 * ov);
+    const sp = Math.max(0.15, 2 * d * Math.tan(ang * DEG) / 1000 * ov * P.realiz);
     lineKm += (areaOceanKm2 * w / ds.wOcean) / sp;
     if (sp < sMin) sMin = sp;
     if (sp > sMax) sMax = sp;
@@ -998,6 +1057,9 @@ function depthBinnedLines(ds, areaOceanKm2, P, curveOverride) {
   if (!lineKm) return null;
   return {
     lineKm,
+    /* banded lineKm assumes spacing can follow each depth band, which needs lines running along the isobaths.
+       Across the slope, one spacing set by the shallowest ground on the line has to cover everything. */
+    lineKmAcross: areaOceanKm2 / sMin,
     effSpacing: areaOceanKm2 / lineKm,
     sMin, sMax,
     pctShallow1k: wShallow1k / ds.wOcean * 100,
@@ -1109,7 +1171,7 @@ const octx = overlay.getContext('2d');
 const renderer = new THREE.WebGLRenderer({ canvas: glCanvas, antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(38, 1, 0.02, 100);
 camera.position.set(0, 0, 3.1);
 
 const globeGroup = new THREE.Group();
@@ -1451,11 +1513,8 @@ function renderAreaBar() {
     const ds = getAreaDS();
     if (ds && ds.landFrac > 0.005) {
       html += '<div class="mb2">' + (ds.landFrac * 100).toFixed(1) + '% is land; net ocean ' +
-        Math.round(areaKm2 * ds.oceanFrac).toLocaleString() + ' km\u00B2. Full costing in the Survey Report.</div>';
-    } else {
-      html += '<div class="mb2">Full costing in the Survey Report.</div>';
+        Math.round(areaKm2 * ds.oceanFrac).toLocaleString() + ' km\u00B2.</div>';
     }
-    html += '<div class="mb2">Press Draw area for a new polygon, Clear to remove.</div>';
   } else {
     html += '<div class="mb2">Click to add vertices. Finish, double click, or right click to close.</div>';
   }
@@ -1796,7 +1855,7 @@ function renderAreaReport() {
     return;
   }
   if (!A.closed || A.verts.length < 3) {
-    out.innerHTML = '<div class="probe-empty">Use Draw area, click at least three points on the globe, then press Finish, double click, or right click. You get area, transit, days on station, coverage rate, and how many deployments the polygon costs.</div>';
+    out.innerHTML = '<div class="probe-empty">Use Draw area and click at least three points on the globe, then press Finish, double click, or right click. Or press Import GeoJSON to load a survey footprint or polygon from a file. You get area, transit, days on station, coverage rate, and how many deployments the polygon costs.</div>';
     return;
   }
   const P = params();
@@ -1839,7 +1898,7 @@ function renderAreaReport() {
   const mapDays = lineDays + turnDays;
   const pad = x => String(x).padStart(3, '0');
   const spacingDesc = binned
-    ? planSpacing.toFixed(1) + ' km effective spacing from bathymetry (' + binned.sMin.toFixed(1) + ' to ' + binned.sMax.toFixed(1) + ' km by depth band, ' + activeSonar().name + ', ' + P.overlap + '% overlap)'
+    ? planSpacing.toFixed(1) + ' km area-weighted spacing from bathymetry (' + binned.sMin.toFixed(1) + ' to ' + binned.sMax.toFixed(1) + ' km by depth band, ' + activeSonar().name + ', ' + P.overlap + '% overlap)'
     : sw.spacing.toFixed(1) + ' km spacing: ' + swDesc + P.overlap + '% overlap';
   html += '<div><span class="lbl">Line plan:</span> <strong>' + plan.n + ' parallel lines</strong> at ' + pad(plan.brg) + '\u00B0/' + pad(plan.brg2) +
     '\u00B0 true, total <strong>' + Math.round(surveyedKm).toLocaleString() + ' km</strong> (' +
@@ -1855,6 +1914,16 @@ function renderAreaReport() {
   html += '<div><span class="lbl">Mapping time:</span> <strong>' + fmtDays(mapDays) + '</strong> <span class="ex">' +
     fmtDays(lineDays) + ' on lines at ' + P.mapspeed + ' kn, plus ' + (plan.n - 1) + ' turns \u00D7 ' + P.lineturn +
     ' min = ' + fmtDays(turnDays) + ', ' + (mapDays > 0 ? Math.round(turnDays / mapDays * 100) : 0) + '% of survey time</span></div>';
+  if (binned && binned.lineKmAcross > binned.lineKm * 1.02) {
+    const acrossKm = binned.lineKmAcross * (surveyedKm / binned.lineKm);
+    const acrossDays = acrossKm / (P.mapspeed * 1.852 * 24) + turnDays;
+    html += '<div><span class="lbl">Line direction:</span> the mapping time above assumes lines run <strong>along the isobaths</strong>, so spacing can widen with depth (' +
+      binned.sMin.toFixed(1) + ' km on the shallowest ground, ' + binned.sMax.toFixed(1) + ' km on the deepest). ' +
+      'Lines run <strong>across the slope</strong> each cross the full depth range, so the shallowest spacing of ' + binned.sMin.toFixed(1) +
+      ' km would have to cover the whole polygon: about <strong>' + Math.round(acrossKm).toLocaleString() + ' km</strong> of line and ' +
+      fmtDays(acrossDays) + ' of mapping, ' + Math.round((acrossKm / surveyedKm - 1) * 100) + '% more. ' +
+      '<span class="ex">The plan below runs the polygon\u2019s long axis, which is not necessarily the isobath direction. Check the two against each other before relying on the shorter figure.</span></div>';
+  }
   if (!act.length) {
     html += '<div>No ports are active, so transit cannot be evaluated. Check at least one port.</div></div>';
     out.innerHTML = html;
@@ -1990,7 +2059,7 @@ function renderAreaReport() {
     html += '<div class="hint">Working only from ' + PORTS[near.i][0] + ' (the centroid\u2019s nearest port) would take about ' +
       oneDep + ' deployments; end of line routing saves ' + (oneDep - nDep) + '.</div>';
   }
-  html += '<div class="hint" style="margin-top:6px">Model: parallel lines along the polygon\u2019s long axis at line spacing = swath \u00D7 (1 \u2212 overlap), one line turn between lines, planned on a flat local plane (coarse for polygons spanning more than about 15 degrees). The vessel runs the stack as one lawnmower serpentine; deployments cut that timeline wherever time runs out, each entering at the nearest port to its resume point and exiting at the nearest port to its stop point, great circle. Polygon area is spherical; with the embedded ETOPO grid, land inside the polygon is excluded and depth mode computes spacing per 250 m depth band. Calendar time sums each deployment\u2019s actual duration (a finished polygon comes home early) plus port turnarounds between deployments.</div>';
+  html += '<div class="hint" style="margin-top:6px">Model: line kilometres are the sum over 250 m depth bands of band area divided by band spacing, so spacing follows depth rather than one average; the drawn plan lays parallel lines along the polygon\u2019s long axis at the area-weighted spacing and supplies the bearing, the picture and the turn count only. Line spacing = swath \u00D7 (1 \u2212 overlap) \u00D7 coverage realization, one line turn between lines, planned on a flat local plane (coarse for polygons spanning more than about 15 degrees). The vessel runs the stack as one lawnmower serpentine; deployments cut that timeline wherever time runs out, each entering at the nearest port to its resume point and exiting at the nearest port to its stop point, great circle. Polygon area is spherical; with the embedded ETOPO grid, land inside the polygon is excluded and depth mode computes spacing per 250 m depth band. Calendar time sums each deployment\u2019s actual duration (a finished polygon comes home early) plus port turnarounds between deployments.</div>';
   html += '</div>';
   /* stash scenario metrics for the export report */
   let altCmp = null;
@@ -2003,6 +2072,7 @@ function renderAreaReport() {
     };
   }
   A.metrics = {
+    mapPng: mapUrl,
     endurance: P.endurance, nDep, calDays, mapDays,
     totalTransit, marginDays, portDays,
     baseDays, baseTransit, delta: calDays - baseDays,
@@ -2283,7 +2353,7 @@ glCanvas.addEventListener('wheel', e => {
   e.preventDefault();
   state.interacted = true;
   const f = e.deltaY < 0 ? 0.92 : 1.087;
-  camera.position.z = Math.max(1.35, Math.min(5.5, camera.position.z * f));
+  camera.position.z = Math.max(1.14, Math.min(5.5, camera.position.z * f));
 }, { passive: false });
 const touches = new Map();
 glCanvas.addEventListener('touchstart', e => { for (const t of e.changedTouches) touches.set(t.identifier, t); });
@@ -2295,7 +2365,7 @@ glCanvas.addEventListener('touchmove', e => {
     const pa = touches.get(a.identifier), pb = touches.get(b.identifier);
     if (pa && pb) {
       const d0 = Math.hypot(pa.clientX - pb.clientX, pa.clientY - pb.clientY);
-      if (d0 > 0) camera.position.z = Math.max(1.35, Math.min(5.5, camera.position.z * d0 / d));
+      if (d0 > 0) camera.position.z = Math.max(1.14, Math.min(5.5, camera.position.z * d0 / d));
     }
     for (const t of e.touches) touches.set(t.identifier, t);
   }
@@ -2515,7 +2585,11 @@ el('btnExport').addEventListener('click', () => {
     ['Weather / ops margin', P.margin + ' d'], ['Fuel range', P.range.toLocaleString() + ' nm'],
     ['Draft', P.draft + ' m'], ['Minimum efficiency', Math.round(P.effmin * 100) + '%'],
     ['Survey speed', P.mapspeed + ' kn'], ['Swath', swathLine],
-    ['Overlap', P.overlap + '% (line spacing ' + sw.spacing.toFixed(1) + ' km)'],
+    ['Overlap', P.overlap + '% (line spacing ' +
+      (bE ? bE.effSpacing.toFixed(1) + ' km, effective across the polygon\u2019s depth bands'
+          : sw.spacing.toFixed(1) + ' km')  /* must match the swath row above: both read from bathymetry when it is driving */
+      + ')'],
+    ['Coverage realization', Math.round(P.realiz * 100) + '% of the sonar curve' + (P.realiz >= 1 ? ' (planning the calm water ideal)' : '')],
     ['Line turn', P.lineturn + ' min'], ['Port turnaround', P.turnaround + ' d'],
     ['Ports active', act.length + ' of ' + PORTS.length + ' clearing ' + (P.draft + UKC).toFixed(1) + ' m, Tier 2 ' + (el('tier2').checked ? 'included' : 'excluded')]
   ].map(r => '<tr><td>' + esc(r[0]) + '</td><td>' + esc(r[1]) + '</td></tr>').join('');
@@ -2573,11 +2647,16 @@ el('btnExport').addEventListener('click', () => {
           ', the two way absorption difference between 12 and 30 kHz rendered as survey time.</div>' : '');
     }
     const scenarioMethod = '<p>' +
-      'The survey plan lays parallel lines along the long axis of the drawn polygon. Line spacing comes from the sonar\u2019s achievable swath at the local depth' +
-      (M && M.binned ? ', computed per 250 m depth band from ETOPO bathymetry inside the polygon,' : ',') +
+      'The survey plan lays parallel lines along the long axis of the drawn polygon. ' +
+      (el('swDepth').checked
+        ? 'Line spacing comes from the sonar\u2019s achievable swath at the local depth' +
+          (M && M.binned ? ', computed per 250 m depth band from ETOPO bathymetry inside the polygon,' : ' (a single static depth for the whole polygon),')
+        : 'Line spacing comes from a manually entered swath of ' + (typeof sw !== 'undefined' && sw && sw.base ? sw.base.toFixed(1) + ' km' : P.swath + ' km') +
+          (P.realiz < 1 ? ' after the ' + Math.round(P.realiz * 100) + '% coverage realization, applied uniformly regardless of depth,' : ', applied uniformly regardless of depth,')) +
       ' less ' + P.overlap + '% overlap between neighboring lines. The vessel runs the whole stack as one continuous serpentine. ' +
       'Deployments cut that timeline wherever the clock runs out, entering at the nearest port to the resume point and exiting at the nearest port to the stop point. ' +
       'Calendar time is the sum of the deployments plus ' + P.turnaround + ' day port turnarounds between them. ' +
+      (M && M.binned ? 'Line kilometres are summed band by band, so shallow ground is planned at tighter spacing and deep ground at wider spacing; the drawn plan and the turn count use the single area-weighted spacing, which is a drawing convenience rather than the timed quantity. ' : '') +
       'The comparison below is the heart of it: the same survey under the rotation, and aboard a vessel that never had to come home.</p>';
     scenarioHtml = '<h2>The survey scenario</h2>' + scenarioMethod + cmpTable + '<div class="survey">' + el('areaOut').innerHTML + '</div>';
   }
@@ -3085,6 +3164,780 @@ updateNet();
 loadLayer('base');
 loadLayer('measured');
 requestAnimationFrame(loop);
+</script>
+
+<script>
+/* ---------- GeoJSON survey area import ---------- */
+(function () {
+  var R_KM = 6371;
+  function toVec(lat, lon) {
+    var la = lat * Math.PI / 180, lo = lon * Math.PI / 180;
+    return [Math.cos(la) * Math.cos(lo), Math.cos(la) * Math.sin(lo), Math.sin(la)];
+  }
+  function dot(a, b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }
+  function cross(a, b) { return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]]; }
+  function ringAreaKm2(verts) {
+    if (verts.length < 3) return 0;
+    var vs = verts.map(function (v) { return toVec(v.lat, v.lon); });
+    var omega = 0, a = vs[0];
+    for (var i = 1; i + 1 < vs.length; i++) {
+      var b = vs[i], c = vs[i + 1];
+      var num = dot(a, cross(b, c));
+      var den = 1 + dot(a, b) + dot(b, c) + dot(c, a);
+      omega += 2 * Math.atan2(num, den);
+    }
+    return Math.abs(omega) * R_KM * R_KM;
+  }
+  function wrapLon(l) { return ((l + 540) % 360) - 180; }
+  function rdp(pts, tol) {
+    if (pts.length < 3) return pts.slice();
+    var keep = new Array(pts.length).fill(false);
+    keep[0] = keep[pts.length - 1] = true;
+    var stack = [[0, pts.length - 1]];
+    while (stack.length) {
+      var seg = stack.pop(), i0 = seg[0], i1 = seg[1];
+      var ax = pts[i0][0], ay = pts[i0][1], bx = pts[i1][0], by = pts[i1][1];
+      var dx = bx - ax, dy = by - ay, len2 = dx * dx + dy * dy;
+      var maxD = -1, maxI = -1;
+      for (var i = i0 + 1; i < i1; i++) {
+        var t = len2 > 0 ? ((pts[i][0] - ax) * dx + (pts[i][1] - ay) * dy) / len2 : 0;
+        t = Math.max(0, Math.min(1, t));
+        var px = ax + t * dx - pts[i][0], py = ay + t * dy - pts[i][1];
+        var d = px * px + py * py;
+        if (d > maxD) { maxD = d; maxI = i; }
+      }
+      if (maxD > tol * tol) {
+        keep[maxI] = true;
+        stack.push([i0, maxI], [maxI, i1]);
+      }
+    }
+    return pts.filter(function (_, i) { return keep[i]; });
+  }
+  function simplifyRing(verts, maxVerts) {
+    maxVerts = maxVerts || 120;
+    var v = verts.slice();
+    if (v.length > 1 && v[0].lat === v[v.length - 1].lat && v[0].lon === v[v.length - 1].lon) v.pop();
+    if (v.length <= maxVerts) return v;
+    var lat0 = v.reduce(function (s2, p) { return s2 + p.lat; }, 0) / v.length;
+    var k = Math.cos(lat0 * Math.PI / 180);
+    var pts = v.map(function (p) { return [p.lon * k, p.lat]; });
+    pts.push(pts[0]);
+    var tol = 0.002;
+    for (var it = 0; it < 24; it++) {
+      var out = rdp(pts, tol);
+      if (out.length - 1 <= maxVerts) {
+        out.pop();
+        return out.map(function (q) { return { lat: q[1], lon: q[0] / k }; });
+      }
+      tol *= 1.6;
+    }
+    var step = Math.ceil(v.length / maxVerts);
+    return v.filter(function (_, i) { return i % step === 0; });
+  }
+  function ringToVerts(ring) {
+    return ring.map(function (c) { return { lat: Number(c[1]), lon: wrapLon(Number(c[0])) }; })
+      .filter(function (p) { return isFinite(p.lat) && isFinite(p.lon); });
+  }
+  function extractRings(gj) {
+    var rings = [];
+    function fromGeom(g) {
+      if (!g) return;
+      if (g.type === 'Polygon' && g.coordinates && g.coordinates[0]) rings.push(g.coordinates[0]);
+      else if (g.type === 'MultiPolygon' && g.coordinates) {
+        g.coordinates.forEach(function (poly) { if (poly && poly[0]) rings.push(poly[0]); });
+      } else if (g.type === 'GeometryCollection' && g.geometries) g.geometries.forEach(fromGeom);
+    }
+    if (gj.type === 'FeatureCollection') (gj.features || []).forEach(function (f) { fromGeom(f.geometry); });
+    else if (gj.type === 'Feature') fromGeom(gj.geometry);
+    else fromGeom(gj);
+    var parts = rings.map(function (r) {
+      var verts = ringToVerts(r);
+      return { verts: verts, areaKm2: ringAreaKm2(verts) };
+    }).filter(function (p) { return p.verts.length >= 3 && p.areaKm2 > 0.01; });
+    parts.sort(function (a, b) { return b.areaKm2 - a.areaKm2; });
+    return parts;
+  }
+
+  var pending = null, idx = 0, slivers = [];
+  function loadPart(i) {
+    if (!pending || !pending[i]) return;
+    if (typeof state === 'undefined') { alert('The planner has not finished loading yet.'); return; }
+    var verts = simplifyRing(pending[i].verts, 120);
+    var span = verts.reduce(function (m, p) { return [Math.min(m[0], p.lon), Math.max(m[1], p.lon)]; }, [180, -180]);
+    if (span[1] - span[0] > 180) alert('This ring appears to cross the antimeridian; the planner does not handle that yet, so the area may be wrong.');
+    state.area.verts = verts;
+    state.area.closed = true;
+    idx = i;   /* set before the report renders, so the parts banner marks the right area as shown */
+    if (typeof stopAreaDraw === 'function') {
+      stopAreaDraw(true);   /* the planner's own finish-drawing sequence: UI cleanup, report, rebuild, readouts */
+    } else {
+      state.area.on = false;
+      if (typeof rebuildArea3D === 'function') rebuildArea3D();
+      if (typeof renderAreaReport === 'function') renderAreaReport();
+      if (typeof updateReadouts === 'function') updateReadouts();
+    }
+    /* fly the globe to the imported polygon */
+    try {
+      var cLat = 0, cLon = 0;
+      if (typeof polygonCentroid === 'function') {
+        var c = polygonCentroid(verts); cLat = c.lat; cLon = c.lon;
+      } else {
+        verts.forEach(function (p) { cLat += p.lat; cLon += p.lon; });
+        cLat /= verts.length; cLon /= verts.length;
+      }
+      var maxTheta = 0, d2r = Math.PI / 180;
+      verts.forEach(function (p) {
+        var dLat = (p.lat - cLat) * d2r, dLon = (p.lon - cLon) * d2r * Math.cos(cLat * d2r);
+        var th = Math.sqrt(dLat * dLat + dLon * dLon);
+        if (th > maxTheta) maxTheta = th;
+      });
+      if (typeof animRotTo === 'function') animRotTo(cLat, cLon);
+      if (typeof camera !== 'undefined') {
+        camera.position.z = Math.max(1.16, Math.min(3.2, 1 + Math.sin(Math.min(maxTheta, 1.2)) * 3.4));
+      }
+      if (typeof state !== 'undefined') state.interacted = true;
+    } catch (err) {}
+    var pb = document.getElementById('btnGeoPart');
+    if (pending.length > 1) {
+      pb.style.display = '';
+      pb.textContent = 'Showing area ' + (i + 1) + ' of ' + pending.length + ', switch';
+    } else pb.style.display = 'none';
+    var b = document.getElementById('btnGeo');
+    b.textContent = 'Imported ' + Math.round(pending[i].areaKm2).toLocaleString() + ' km\u00B2';
+    setTimeout(function () { b.textContent = 'Import GeoJSON'; }, 3000);
+  }
+  function wire() {
+    var btn = document.getElementById('btnGeo');
+    var pb = document.getElementById('btnGeoPart');
+    var fi = document.getElementById('geoFile');
+    if (!btn || !fi) return;
+    btn.addEventListener('click', function () { fi.click(); });
+    pb.addEventListener('click', function () { loadPart((idx + 1) % pending.length); });
+    fi.addEventListener('change', function (e) {
+      var f = e.target.files[0];
+      if (!f) return;
+      var rd = new FileReader();
+      rd.onload = function () {
+        try {
+          var parts = extractRings(JSON.parse(rd.result));
+          if (!parts.length) { alert('No polygon rings found in that file. It needs GeoJSON with Polygon or MultiPolygon geometry.'); return; }
+          var biggest = parts[0].areaKm2;
+          slivers = parts.filter(function (p) { return p.areaKm2 < biggest * 0.005; });
+          parts = parts.filter(function (p) { return p.areaKm2 >= biggest * 0.005; });
+          pending = parts;
+          loadPart(0);
+        } catch (err) { alert('Could not read that GeoJSON: ' + err.message); }
+      };
+      rd.readAsText(f);
+      fi.value = '';
+    });
+  }
+  function partsBanner() {
+    if (!pending || pending.length < 2) return null;
+    var bits = pending.map(function (p, k) {
+      var me = k === idx;
+      var a = p.areaOceanKm2 != null ? p.areaOceanKm2 : p.areaKm2;
+      return (me ? '<b>' : '') + 'Area ' + (k + 1) + ': ' + Math.round(a).toLocaleString() + ' km\u00B2' + (me ? ' (shown)</b>' : '');
+    });
+    var txt = '<b>This footprint has ' + pending.length + ' separate areas.</b> ' + bits.join(' \u00B7 ') +
+      '<br>The report below covers only the area shown. To price the whole survey as one job, add each area to the ' +
+      'campaign and the planner will total the mapping days, transits, port turnarounds and deployments for you.';
+    if (slivers.length) txt += ' ' + slivers.length + ' sliver' + (slivers.length > 1 ? 's' : '') +
+      ' under 0.5% of the largest area (calibration or normalization lines) ignored.';
+    var div = document.createElement('div');
+    div.style.cssText = 'margin:0 0 10px;padding:9px 12px;border:1px solid #c6af75;border-left:4px solid #c6af75;border-radius:8px;font-size:12.5px;line-height:1.55;color:#33526b;background:#fdfaf2';
+    div.innerHTML = txt;
+    var bar = document.createElement('div');
+    bar.style.cssText = 'margin-top:7px;display:flex;gap:7px;flex-wrap:wrap;align-items:center';
+    var add = document.createElement('button');
+    add.className = 'sm-inline';
+    add.textContent = 'Add this area to the campaign';
+    add.addEventListener('click', function () {
+      var real = document.getElementById('campAdd');
+      if (real) { real.click(); flashCampaign(); }
+    });
+    bar.appendChild(add);
+    var next = document.createElement('button');
+    next.className = 'sm-inline';
+    next.textContent = 'Switch to the next area';
+    next.addEventListener('click', function () {
+      var pb = document.getElementById('btnGeoPart');
+      if (pb) pb.click();
+    });
+    bar.appendChild(next);
+    var hint = document.createElement('span');
+    hint.style.cssText = 'font-size:11.5px;color:#7a6a45';
+    hint.textContent = 'Campaign totals appear just below this report.';
+    bar.appendChild(hint);
+    div.appendChild(bar);
+    return div;
+  }
+  function flashCampaign() {
+    var p = document.getElementById('campPanel');
+    if (!p) return;
+    try { p.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) { p.scrollIntoView(); }
+    var box = p.firstChild;
+    if (!box || !box.style) return;
+    var prev = box.style.boxShadow;
+    box.style.transition = 'box-shadow .3s';
+    box.style.boxShadow = '0 0 0 3px rgba(198,175,117,.85)';
+    setTimeout(function () { box.style.boxShadow = prev || 'none'; }, 1400);
+  }
+  function hookReport() {
+    if (typeof renderAreaReport !== 'function' || typeof el !== 'function') return;
+    var orig = renderAreaReport;
+    renderAreaReport = function () {
+      orig();
+      try {
+        /* record the ocean area (land cells excluded) for the part on screen so every figure in the exports agrees */
+        if (pending && pending[idx] && state.area && state.area.metrics && state.area.metrics.areaOcean)
+          pending[idx].areaOceanKm2 = state.area.metrics.areaOcean;
+        var b = partsBanner();
+        if (b && state.area && state.area.closed) el('areaOut').insertBefore(b, el('areaOut').firstChild);
+      } catch (err) {}
+    };
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { wire(); hookReport(); });
+  else { wire(); hookReport(); }
+  if (typeof window !== 'undefined') window.__geoImport = { extractRings: extractRings, simplifyRing: simplifyRing, ringAreaKm2: ringAreaKm2 };
+})();
+</script>
+<script>
+/* ---------- Cost Model handoff (seirios.costmodel.scenario.v1) ---------- */
+(function () {
+  function buildBands(M, P) {
+    var area = M.areaOcean || M.areaKm2;
+    var bands = null;
+    try {
+      if (typeof getAreaDS === 'function' && typeof curveAngleDeg === 'function' &&
+          typeof activeSonar === 'function' && typeof DEG !== 'undefined') {
+        var swCb = document.getElementById('swDepth');
+        var ds = getAreaDS();
+        if (ds && ds.wOcean > 0 && swCb && swCb.checked) {
+          var edges = [0, 500, 1000, 2000, 3000, 4500, 6000, 11000];
+          var curve = activeSonar().curve;
+          var ov = Math.max(0, 1 - P.overlap / 100);
+          bands = [];
+          for (var e = 0; e < edges.length - 1; e++) {
+            var w = 0, wd = 0, lk = 0;
+            for (var b = 0; b < 60; b++) {
+              var d = (b + 0.5) * 250;
+              if (d < edges[e] || d >= edges[e + 1]) continue;
+              var wt = ds.hist[b];
+              if (!wt) continue;
+              var ang = Math.min(curveAngleDeg(curve, d), P.maxangle);
+              var sp = Math.max(0.15, 2 * d * Math.tan(ang * DEG) / 1000 * ov * (P.realiz != null ? P.realiz : 1));
+              w += wt; wd += wt * d; lk += (area * wt / ds.wOcean) / sp;
+            }
+            if (w <= 0 || lk <= 0) continue;
+            var bandArea = area * w / ds.wOcean;
+            bands.push({
+              label: edges[e].toLocaleString() + ' - ' + edges[e + 1].toLocaleString() + ' m',
+              depth_m: Math.round(wd / w),
+              share_pct: Math.round(w / ds.wOcean * 1000) / 10,
+              km2_per_day: Math.round((bandArea / lk) * P.mapspeed * 1.852 * 24)
+            });
+          }
+          if (!bands.length) bands = null;
+        }
+      }
+    } catch (err) { bands = null; }
+    if (!bands) bands = [{
+      label: 'Median depth',
+      depth_m: Math.round(M.medianD != null ? M.medianD : P.depthm),
+      share_pct: 100,
+      km2_per_day: M.mapDays > 0 ? Math.round(area / M.mapDays) : null
+    }];
+    return bands;
+  }
+  /* ---------- Campaign accumulator: additive multi-area survey metrics ---------- */
+  var CAMP = [], CAMP_ROUTE = 'separate';
+  function captureMapJpeg() {
+    try {
+      if (typeof renderer === 'undefined' || typeof glCanvas === 'undefined' ||
+          typeof scene === 'undefined' || typeof camera === 'undefined') return null;
+      renderer.render(scene, camera);
+      if (typeof drawOverlay === 'function') drawOverlay(true);
+      var comp = document.createElement('canvas');
+      comp.width = glCanvas.width; comp.height = glCanvas.height;
+      var cg = comp.getContext('2d');
+      cg.drawImage(glCanvas, 0, 0);
+      if (typeof overlay !== 'undefined') cg.drawImage(overlay, 0, 0, comp.width, comp.height);
+      var img = comp.toDataURL('image/jpeg', 0.85);
+      if (typeof drawOverlay === 'function') drawOverlay();
+      return img;
+    } catch (e) { return null; }
+  }
+  function areaGeojson() {
+    try {
+      var vs = state.area.verts;
+      if (!vs || vs.length < 3) return null;
+      var ring = vs.map(function (p) { return [p.lon, p.lat]; });
+      ring.push([ring[0][0], ring[0][1]]);
+      return { type: 'Polygon', coordinates: [ring] };
+    } catch (e) { return null; }
+  }
+  function r1(v) { return Math.round(v * 10) / 10; }
+  function gcNm(a, b) {
+    if (!a || !b) return null;
+    var R = 3440.065, d2r = Math.PI / 180;
+    var dLat = (b.lat - a.lat) * d2r, dLon = (b.lon - a.lon) * d2r;
+    var x = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(a.lat * d2r) * Math.cos(b.lat * d2r) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return 2 * R * Math.asin(Math.min(1, Math.sqrt(x)));
+  }
+  function interAreaNm() {
+    var legs = [], ok = true;
+    for (var i = 0; i + 1 < CAMP.length; i++) {
+      var d = gcNm(CAMP[i].cen, CAMP[i + 1].cen);
+      if (d == null) { ok = false; break; }
+      legs.push(d);
+    }
+    return ok ? legs : null;
+  }
+  function chainedAvailable() { return CAMP.length > 1 && !!interAreaNm(); }
+  function campTotals() {
+    var P = (typeof params === 'function') ? params() : { turnaround: 2, speed: 10, endurance: 10, mapspeed: 8 };
+    var joints = Math.max(0, CAMP.length - 1);
+    var chained = CAMP_ROUTE === 'chained' && chainedAvailable();
+    var jointPort = chained ? 0 : joints * (P.turnaround != null ? P.turnaround : 2);
+    var t = { area: 0, mapDays: 0, transit: 0, port: jointPort, margin: 0, dep: 0, base: 0, delta: 0, cal: 0,
+              chained: chained, legNm: 0 };
+    CAMP.forEach(function (c) {
+      t.area += c.area; t.mapDays += c.mapDays; t.port += c.port;
+      t.margin += c.margin; t.dep += c.dep; t.base += c.base; t.delta += c.delta;
+      if (!chained) t.transit += c.transit;
+    });
+    if (chained) {
+      var legs = interAreaNm();
+      var sum = legs.reduce(function (a, b) { return a + b; }, 0);
+      t.legNm = sum;
+      var firstOut = CAMP[0].distNm || 0, lastHome = CAMP[CAMP.length - 1].distNm || 0;
+      t.transit = (firstOut + sum + lastHome) / (P.speed * 24);
+      t.dep = Math.max(1, Math.ceil((t.mapDays + t.transit) / Math.max(1, P.endurance)));
+    }
+    t.delta += jointPort;
+    t.cal = t.mapDays + t.transit + t.port + t.margin;
+    return t;
+  }
+  /* alongside events: each deployment starts and ends in port; consecutive deployments from one port share the call between them */
+  function campPortCalls(t) {
+    if (t.chained) return t.dep + 1;
+    return CAMP.reduce(function (n, c) { return n + (c.dep || 1) + 1; }, 0);
+  }
+  function mergeBands() {
+    var by = {};
+    CAMP.forEach(function (c) {
+      (c.bands || []).forEach(function (b) {
+        if (typeof b.km2_per_day !== 'number' || b.km2_per_day <= 0) return;
+        var k = b.label;
+        if (!by[k]) by[k] = { label: b.label, wd: 0, area: 0, days: 0 };
+        var bandArea = c.area * (b.share_pct != null ? b.share_pct : 100) / 100;
+        by[k].area += bandArea;
+        by[k].days += bandArea / b.km2_per_day;
+        by[k].wd += b.depth_m * bandArea;
+      });
+    });
+    var tot = campTotals().area;
+    var out = Object.keys(by).map(function (k) {
+      var e = by[k];
+      return { label: e.label, depth_m: Math.round(e.wd / e.area),
+               share_pct: Math.round(e.area / tot * 1000) / 10,
+               km2_per_day: Math.round(e.area / e.days) };
+    });
+    out.sort(function (a, b) { return a.depth_m - b.depth_m; });
+    return out.length ? out : undefined;
+  }
+  function campScenario() {
+    var P = params();
+    var t = campTotals();
+    return {
+      schema: 'seirios.costmodel.scenario.v1',
+      source: 'Endurance Planner campaign (' + CAMP.length + ' areas)',
+      area_km2: Math.round(t.area),
+      distance_nm: Math.round(CAMP[0].distNm),
+      overlap_pct: P.overlap, endurance_days: P.endurance,
+      port_days: r1(t.port), weather_margin_days: r1(t.margin),
+      survey_speed_kt: P.mapspeed, transit_speed_kt: P.speed,
+      depth_bands: mergeBands(),
+      mapping_days_override: r1(t.mapDays),
+      transit_days_override: r1(t.transit),
+      deployments: t.dep, base_days: r1(t.base),
+      port_calls: campPortCalls(t),
+      coverage_realization_pct: Math.round((P.realiz != null ? P.realiz : 1) * 100),
+      rotation_delta_days: r1(t.delta),
+      routing: t.chained ? 'chained single cruise' : 'separate mobilisations',
+      figures: CAMP.map(function (c) {
+        return { label: c.label, area_km2: Math.round(c.area), geojson: c.geo || null, jpeg: c.jpeg || null };
+      })
+    };
+  }
+  var COST_MODEL_URL = 'cost-model.html';   /* same folder; rename here if the file is renamed */
+  /* Hands the scenario over three ways so it works hosted and offline:
+     stash it under the shared key, save the file, copy to clipboard. */
+  function handOff(obj) {
+    var ok = false;
+    try { localStorage.setItem('seiriosCostScenario', JSON.stringify(obj)); ok = true; } catch (e) {}
+    return ok;
+  }
+  function openCostModel() {
+    try { window.open(COST_MODEL_URL, '_blank'); return true; } catch (e) { return false; }
+  }
+  function saveJson(obj, name) {
+    var txt = JSON.stringify(obj, null, 2);
+    var blob = new Blob([txt], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt);
+  }
+  function challenge_text() {
+    var t = campTotals();
+    if (t.chained) {
+      return 'One cruise: out to the first area, ' + Math.round(t.legNm).toLocaleString() +
+        ' nm steamed between areas, home from the last. No port call between areas, so this assumes endurance and crewing allow the areas to be worked back to back.';
+    }
+    return 'Each area is a separate job: round trip from its own nearest port, with a port turnaround between areas. Repositioning between the two working ports is not steamed.';
+  }
+  function renderCampaign() {
+    var out = (typeof el === 'function') ? el('areaOut') : null;
+    if (!out || !out.parentElement) return;
+    var host = document.getElementById('campPanel');
+    if (!host) {
+      host = document.createElement('div');
+      host.id = 'campPanel';
+      out.parentElement.insertBefore(host, out.nextSibling);
+    }
+    var M = (typeof state !== 'undefined' && state.area) ? state.area.metrics : null;
+    if (!M && !CAMP.length) { host.innerHTML = ''; return; }
+    var h = "<div style='margin-top:10px;padding:9px 12px;border:1px solid #C9DDE7;border-left:4px solid #c6af75;border-radius:8px;font-size:12.5px;line-height:1.55;color:#33526b;background:#fbfaf5'>";
+    h += "<b style='letter-spacing:.06em'>CAMPAIGN</b> &middot; combine areas into one additive plan<br>";
+    if (CAMP.length) {
+      CAMP.forEach(function (c, i) {
+        h += (i + 1) + ". " + c.label + ": " + Math.round(c.area).toLocaleString() + " km\u00B2, " +
+             r1(c.mapDays) + " mapping d, " + c.dep + " dep<br>";
+      });
+      var t = campTotals();
+      h += "<b>Total: " + Math.round(t.area).toLocaleString() + " km\u00B2 \u00B7 " + r1(t.mapDays) +
+           " mapping d \u00B7 " + r1(t.transit) + " transit d \u00B7 " + r1(t.port) + " port d \u00B7 " +
+           t.dep + " deployments \u00B7 " + r1(t.cal) + " calendar d</b>";
+      if (CAMP.length > 1) h += "<br><span style='color:#5b7183'>Includes " + (CAMP.length - 1) +
+        " port turnaround" + (CAMP.length > 2 ? "s" : "") + " joining the areas. Slightly conservative: a real campaign may chain the last partial deployment of one area into the next.</span>";
+    } else {
+      h += "<span style='color:#5b7183'>No areas added yet.</span>";
+    }
+    if (CAMP.length > 1) {
+      h += "<div style='margin-top:6px'><label style='font-size:11.5px;color:#5b7183'>Routing between areas ";
+      h += "<select id='campRoute' style='font:inherit;font-size:11.5px;padding:2px 5px;border:1px solid #C9DDE7;border-radius:6px'>";
+      h += "<option value='separate'" + (CAMP_ROUTE === 'separate' ? " selected" : "") + ">Separate mobilisations</option>";
+      h += "<option value='chained'" + (CAMP_ROUTE === 'chained' ? " selected" : "") + (chainedAvailable() ? "" : " disabled") + ">Chained single cruise</option>";
+      h += "</select></label>";
+      h += "<div style='font-size:11px;color:#7a6a45;margin-top:3px'>" +
+challenge_text() + "</div></div>";
+    }
+    h += "<div style='margin-top:7px;display:flex;gap:7px;flex-wrap:wrap'>";
+    if (M) h += "<button id='campAdd' class='sm-inline'>Add shown area</button>";
+    if (CAMP.length) {
+      h += "<button id='campSend' class='sm-inline'>Send campaign to Cost Model</button>";
+      h += "<button id='campClear' class='sm-inline'>Clear campaign</button>";
+    }
+    h += "</div></div>";
+    host.innerHTML = h;
+    var add = document.getElementById('campAdd');
+    if (add) add.addEventListener('click', function () {
+      var P = params();
+      var m = state.area.metrics;
+      CAMP.push({
+        label: 'Area ' + (CAMP.length + 1),
+        area: m.areaOcean || m.areaKm2, mapDays: m.mapDays, transit: m.totalTransit,
+        port: m.portDays, margin: m.marginDays, dep: m.nDep, base: m.baseDays,
+        delta: m.calDays - m.baseDays, distNm: m.baseTransit * P.speed * 24 / 2,
+        bands: buildBands(m, P),
+        geo: areaGeojson(), jpeg: m.mapPng || captureMapJpeg(),
+        cen: (function () {
+          try {
+            var v = state.area.verts, la = 0, lo = 0;
+            v.forEach(function (p) { la += p.lat; lo += p.lon; });
+            return { lat: la / v.length, lon: lo / v.length };
+          } catch (e) { return null; }
+        })()
+      });
+      renderCampaign();
+    });
+    var snd = document.getElementById('campSend');
+    if (snd) snd.addEventListener('click', function () {
+      var sc = campScenario();
+      saveJson(sc, 'scenario_campaign_cost_model.json');
+      if (handOff(sc)) openCostModel();
+      snd.textContent = 'Campaign saved + copied';
+      setTimeout(function () { snd.textContent = 'Send campaign to Cost Model'; }, 2500);
+    });
+    var rsel = document.getElementById('campRoute');
+    if (rsel) rsel.addEventListener('change', function () { CAMP_ROUTE = rsel.value; renderCampaign(); });
+    var clr = document.getElementById('campClear');
+    if (clr) clr.addEventListener('click', function () { CAMP = []; renderCampaign(); });
+  }
+  function hookCampaign() {
+    if (typeof renderAreaReport !== 'function') return;
+    var orig2 = renderAreaReport;
+    renderAreaReport = function () {
+      orig2();
+      try { renderCampaign(); } catch (err) {}
+    };
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hookCampaign);
+  else hookCampaign();
+
+  function shownIndex() {
+    try {
+      var m = state.area && state.area.metrics;
+      if (!m) return -1;
+      var a = Math.round(m.areaOcean || m.areaKm2);
+      for (var i = 0; i < CAMP.length; i++) if (Math.round(CAMP[i].area) === a) return i;
+    } catch (e) {}
+    return -1;
+  }
+  function campaignSectionHtml() {
+    if (!CAMP.length) return '';
+    var P = params();
+    var t = campTotals();
+    var joints = Math.max(0, CAMP.length - 1);
+    var h = '<h2>Campaign: ' + CAMP.length + ' survey area' + (CAMP.length === 1 ? '' : 's') + '</h2>';
+    h += '<div class="secnote">The report above covers one area at a time. This section totals the areas added to the campaign. Routing: ' +
+         (t.chained ? 'one continuous cruise, steaming directly between areas' : 'each area worked as its own job from its nearest port, with a port turnaround between areas') + '.</div>';
+    h += '<table><tr><td style="font-weight:700">Area</td><td style="font-weight:700">Size</td>' +
+         '<td style="font-weight:700">Mapping</td><td style="font-weight:700">Transit</td>' +
+         '<td style="font-weight:700">Port</td><td style="font-weight:700">Deployments</td></tr>';
+    CAMP.forEach(function (c) {
+      h += '<tr><td>' + c.label + '</td><td>' + Math.round(c.area).toLocaleString() + ' km\u00B2</td><td>' +
+           c.mapDays.toFixed(1) + ' d</td><td>' + c.transit.toFixed(1) + ' d</td><td>' +
+           c.port.toFixed(1) + ' d</td><td>' + c.dep + '</td></tr>';
+    });
+    if (t.chained) {
+      h += '<tr><td>Between areas</td><td>' + Math.round(t.legNm).toLocaleString() + ' nm</td><td></td><td>steamed direct</td><td>0.0 d</td><td></td></tr>';
+    } else if (joints) {
+      h += '<tr><td>Between areas</td><td></td><td></td><td></td><td>' +
+           (joints * (P.turnaround != null ? P.turnaround : 2)).toFixed(1) + ' d</td><td></td></tr>';
+    }
+    h += '<tr><td style="font-weight:700">Campaign total</td><td style="font-weight:700">' +
+         Math.round(t.area).toLocaleString() + ' km\u00B2</td><td style="font-weight:700">' +
+         t.mapDays.toFixed(1) + ' d</td><td style="font-weight:700">' + t.transit.toFixed(1) + ' d</td><td style="font-weight:700">' +
+         t.port.toFixed(1) + ' d</td><td style="font-weight:700">' + t.dep + '</td></tr></table>';
+    h += '<div><span class="bigbadge">' + t.dep + ' deployment' + (t.dep === 1 ? '' : 's') +
+         ' \u2248 ' + t.cal.toFixed(1) + ' days calendar time across ' + Math.round(t.area).toLocaleString() + ' km\u00B2</span></div>';
+    h += '<div class="secnote">Port calls: ' + campPortCalls(t) + '. Each deployment starts and ends alongside; consecutive deployments worked from the same port share the call between them' +
+         (t.chained ? '.' : ', and separate mobilisations from different ports do not.') + '</div>';
+    h += '<div class="secnote">Endurance cost across the campaign: the ' + P.endurance +
+         ' day rotation adds about ' + t.delta.toFixed(1) + ' days of extra transit and port time versus a vessel that never had to come home. ' +
+         (t.chained
+            ? 'Routed as one cruise with ' + Math.round(t.legNm).toLocaleString() + ' nm steamed between areas.'
+            : 'Each area is planned as its own job from its own port; repositioning between those ports is not counted, and a single continuous cruise would steam between the areas instead.') + '</div>';
+    var si = shownIndex();
+    var figs = CAMP.filter(function (c, i) { return c.jpeg && i !== si; });
+    if (figs.length) {
+      h += '<div class="secnote">Line plans for the other area' + (figs.length === 1 ? '' : 's') +
+           ' in this campaign. The area carried through the detailed section below has its own map there.</div>';
+      h += figs.map(function (c) {
+        return '<figure><img src="' + c.jpeg + '" alt="' + c.label + '"><figcaption>' + c.label + ': ' +
+               Math.round(c.area).toLocaleString() + ' km\u00B2</figcaption></figure>';
+      }).join('');
+    }
+    return h;
+  }
+  function injectCampaign(html) {
+    var sec = campaignSectionHtml();
+    if (!sec) return html;
+    var marker = '<h2>The survey scenario</h2>';
+    var at = html.indexOf(marker);
+    if (at < 0) {
+      var f = html.lastIndexOf('<footer>');
+      return f < 0 ? html + sec : html.slice(0, f) + sec + html.slice(f);
+    }
+    /* campaign totals lead; the single-area walkthrough follows, retitled so it is clearly one area of several */
+    var si = shownIndex();
+    var label = si >= 0 ? CAMP[si].label : 'the area on screen';
+    var newHead = '<h2>Area detail: ' + label + (CAMP.length > 1 ? ' (shown in full; ' + CAMP.length + ' areas in the campaign)' : '') + '</h2>' +
+      '<div class="secnote">The method and comparison below describe this one area. Campaign totals for all ' +
+      CAMP.length + ' area' + (CAMP.length === 1 ? '' : 's') + ' are in the section above.</div>';
+    return html.slice(0, at) + sec + newHead + html.slice(at + marker.length);
+  }
+  /* the report is long, so repeat the export control at the foot of it */
+  function addFootExport() {
+    var out = document.getElementById('areaOut');
+    if (!out || out.querySelector('.footexport')) return;
+    if (!out.querySelector('table') && !out.querySelector('.bignum')) return;
+    var d = document.createElement('div');
+    d.className = 'footexport';
+    d.style.cssText = 'margin-top:18px;padding-top:14px;border-top:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap';
+    var b1 = document.createElement('button');
+    b1.textContent = 'Export report';
+    b1.addEventListener('click', function () { var t = document.getElementById('btnExport'); if (t) t.click(); });
+    var b2 = document.createElement('button');
+    b2.textContent = 'Send to Cost Model';
+    b2.addEventListener('click', function () { var t = document.getElementById('btnSendCost'); if (t) t.click(); });
+    d.appendChild(b1); d.appendChild(b2);
+    out.appendChild(d);
+  }
+  if (typeof renderAreaReport === 'function') {
+    var _origAR = renderAreaReport;
+    renderAreaReport = function () { _origAR.apply(this, arguments); try { addFootExport(); } catch (e) {} };
+  }
+  function hookExport() {
+    var btnE = document.getElementById('btnExport');
+    if (!btnE) return;
+    btnE.addEventListener('click', function () {
+      if (!CAMP.length) return;
+      var realOpen = window.open;
+      window.open = function () {
+        var w = realOpen.apply(window, arguments);
+        try {
+          if (w && w.document && w.document.write) {
+            var realWrite = w.document.write.bind(w.document);
+            w.document.write = function (html) { realWrite(injectCampaign(html)); };
+          }
+        } catch (e) {}
+        return w;
+      };
+      setTimeout(function () { window.open = realOpen; }, 0);
+    }, true);
+  }
+  var PHELP = {
+    speed: 'Steaming speed between port and the survey area. Sets how much of a deployment is spent in transit.',
+    endurance: 'How many days the vessel can stay out per deployment before returning to port. This is the single biggest lever on the whole model.',
+    margin: 'Weather and operations margin added to each deployment. Zero gives a calm water envelope.',
+    range: 'Fuel range in nautical miles. Caps reach independently of the deployment length.',
+    draft: 'Vessel draft. Ports shallower than this plus the under keel clearance are excluded.',
+    effmin: 'Minimum share of a deployment that must be spent on station for the trip to count as productive.',
+    mapspeed: 'Speed while running survey lines. Slower speeds map less per day but often collect better data.',
+    lineturn: 'Time lost turning at the end of each line. Small individually, real over a long line plan.',
+    turnaround: 'Days alongside between deployments for crew change, fuel, water and provisions.',
+    swath: 'Fixed swath width used only in manual mode. Ignored when the sonar curve is selected.',
+    realiz: 'Share of the sonar curve actually achieved at sea. The curve is a calm water best case; sea state, sound speed structure, quality driven angle and speed limits and line reruns all cut into it. 100% plans the ideal, 85% is a reasonable working assumption, and the Fugro KR-OER-19-01 contract realized about 60%.',
+    overlap: 'Pairwise overlap between adjacent lines: spacing = swath x (1 - overlap). NOAA style 20% is entered as 20, never doubled.',
+    sonar: 'Which sonar curve to use for coverage. Lower frequency systems hold a wider swath in deep water.',
+    depthsrc: 'Where the depth comes from: the polygon bathymetry grid, or a single static depth you type.',
+    maxangle: 'Practical limit on the outer beam angle. Caps the swath the curve would otherwise predict.',
+    depthm: 'Static water depth used when the depth source is set to static rather than polygon bathymetry.',
+    tier2: 'Include smaller secondary ports as well as the main list.',
+    texres: 'Basemap texture resolution. Higher looks better and uses more memory.'
+  };
+  function applyHelp() {
+    Object.keys(PHELP).forEach(function (id) {
+      var inp = document.getElementById(id);
+      if (inp) inp.title = PHELP[id];
+      var lab = document.querySelector('label[for="' + id + '"]');
+      if (lab && !lab.querySelector('.qmark')) {
+        lab.title = PHELP[id];
+        lab.style.cursor = 'help';
+        var q = document.createElement('span');
+        q.className = 'qmark';
+        q.textContent = '?';
+        q.title = PHELP[id];
+        q.setAttribute('role', 'button');
+        q.setAttribute('tabindex', '0');
+        var box = document.createElement('div');
+        box.className = 'helpbox';
+        box.textContent = PHELP[id];
+        box.style.display = 'none';
+        var toggle = function (ev) {
+          ev.preventDefault(); ev.stopPropagation();
+          var open = box.style.display !== 'none';
+          document.querySelectorAll('.helpbox').forEach(function (o) { o.style.display = 'none'; });
+          box.style.display = open ? 'none' : 'block';
+        };
+        q.addEventListener('click', toggle);
+        q.addEventListener('keydown', function (ev) { if (ev.key === 'Enter' || ev.key === ' ') toggle(ev); });
+        lab.appendChild(q);
+        if (lab.parentElement) lab.parentElement.appendChild(box);
+      }
+    });
+    var sm = document.getElementById('swManual'), sd = document.getElementById('swDepth');
+    if (sm) sm.parentElement.title = 'Uses the fixed swath you type. The sonar and depth settings are ignored.';
+    if (sd) sd.parentElement.title = 'Computes swath from the sonar coverage curve at the local water depth. This is the realistic mode for deep water.';
+  }
+  function swathModeNotice() {
+    var host = document.getElementById('swModeNote');
+    if (!host) return;
+    var manual = document.getElementById('swManual');
+    if (manual && manual.checked) {
+      host.style.display = '';
+      host.innerHTML = '<b>Line plan is using a fixed manual swath.</b> Coverage does not change with water depth, so mapping days will be wrong wherever the depth varies. ' +
+        'Switch to <b>From depth (sonar curve)</b> above to compute swath from the sonar and the polygon bathymetry.';
+    } else {
+      host.style.display = 'none';
+    }
+  }
+  function wireSwathNotice() {
+    ['swManual', 'swDepth'].forEach(function (id) {
+      var r = document.getElementById(id);
+      if (r) r.addEventListener('change', swathModeNotice);
+    });
+    swathModeNotice();
+  }
+  function wire() {
+    hookExport();
+    applyHelp();
+    wireSwathNotice();
+    var btn = document.getElementById('btnSendCost');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      try {
+        if (typeof state === 'undefined' || typeof params !== 'function') {
+          alert('The planner has not finished loading yet.');
+          return;
+        }
+        var A = state.area, M = A && A.metrics;
+        if (!M) {
+          alert('Draw and finish a survey area first. The scenario export uses the area report figures.');
+          return;
+        }
+        var P = params();
+        var r1 = function (v) { return Math.round(v * 10) / 10; };
+        var scenario = {
+          schema: 'seirios.costmodel.scenario.v1',
+          source: 'Endurance Planner',
+          area_km2: Math.round(M.areaOcean || M.areaKm2),
+          distance_nm: Math.round(M.baseTransit * P.speed * 24 / 2),
+          overlap_pct: P.overlap,
+          endurance_days: P.endurance,
+          port_days: r1(M.portDays),
+          weather_margin_days: r1(M.marginDays),
+          survey_speed_kt: P.mapspeed,
+          transit_speed_kt: P.speed,
+          depth_bands: buildBands(M, P),
+          mapping_days_override: r1(M.mapDays),
+          transit_days_override: r1(M.totalTransit),
+          deployments: M.nDep,
+          port_calls: (M.nDep || 1) + 1,
+          coverage_realization_pct: Math.round((P.realiz != null ? P.realiz : 1) * 100),
+          base_days: r1(M.baseDays),
+          rotation_delta_days: r1(M.calDays - M.baseDays),
+          area_geojson: areaGeojson(),
+          map_png: M.mapPng || captureMapJpeg()
+        };
+        var txt = JSON.stringify(scenario, null, 2);
+        var blob = new Blob([txt], { type: 'application/json' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'scenario_cost_model.json';
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt);
+        var handed = false;
+        try { localStorage.setItem('seiriosCostScenario', txt); handed = true; } catch (e) {}
+        if (handed) { try { window.open('cost-model.html', '_blank'); } catch (e) {} }
+        btn.textContent = handed ? 'Opening Cost Model\u2026' : 'Scenario saved + copied';
+        setTimeout(function () { btn.textContent = 'Send to Cost Model'; }, 2500);
+      } catch (e) {
+        alert('Could not build the scenario: ' + e.message);
+      }
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire);
+  else wire();
+})();
 </script>
 </body>
 </html>
