@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Endurance Planner, User Guide</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23033E7D'/%3E%3Cpath d='M4 22c5-4 9 2 14-2s8-1 10-3' stroke='%23c6af75' stroke-width='2' fill='none'/%3E%3Cpath d='M4 27c5-4 9 2 14-2s8-1 10-3' stroke='%23c6af75' stroke-width='1.4' fill='none' opacity='.7'/%3E%3Ccircle cx='16' cy='10' r='3.5' fill='%23c6af75'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC+0lEQVR4nO2Xy27TQBSG/3NmnMS5NqRQlUJE6QIWCAFSl1S8AwsknoFXYMWWt2DNmhUsKrFAgIQAgcpVpdya3uK0iRPbM4dFHCkqTkuiygiJXxppZFvzfz6XGZswJLV0W5CCzPIdGsw5bfP9Xpy2+X4I+hvmw+LDH/kPkCzNCE9W7BoAEDBxGscGGJhVXNk+PyNfAYA4TQDqm81WbKNelV4MZdMEsABwegredNGqSY0nBhAhIkDmKhKVctAAhIjSSQERRLFEAtBc1WbcDBwAFBlxFCPsw0AwRlEmAlB/IcsEoxiRYkRaScAEs1i3L7MafjGLLCxEMaKrC+aJoxACIBFQfwmAiGQwxgKQ/kJsBcpYaGOhI0MZY6HfNbh+czF8crwopRNllG8thY+9LrnWQjkKvWEzEaHBGAWQuBVPubI1XcDWTFmaJ8rSnSnBThfEOZa3bikr7tmanc9mOKc1I6MV1r1g11XiGosoEO75ATqej92NNnnfmtx53yD1+jvPfdmh+f1eOomqkpfmqWPYPlmRXq0gKGXFyWloI7CbbWpNF8mbK6jcnh8GDz7IM2OUtAOYpk+26RM3fcpst5H3fKq1unSmE6IQRMgmeSUCrG7xwuoWFpLunZuxb29cNh8dLcSs5dMGgntPnWujQnyYkovwtwJEqBlhvSqfL8zajbuPnIsKJvfwLVbe/FTl65ei5WpeNh2FQDFCRWSYYYlgBxvXKCVGQAQswG/NtNOh6v0Xeh4AFKPdM5Dna3zl1Q/uEiChQSZe4Y8bMRFglHZ7mBq8UWCo5/kkzLCRgWMFE+2K4+6EIgKIgDqBdDyflLXgw8J8lADEsdmOT61WF06fCiP7HIAQILW8NI4CAIiz22hRq9WNW4sOBCABqOlz7UgABl6rO9TdC8gFAPmDBBiRxBoZ/zSM072yzu5elwox1kEROFBjdUEfgBgQrKxzvR1SEYgrMzWA+GBp7NHs0OWJI/DvfhUfGcDwj2LaMst3iAeTv2EODKUgTYhhr18MrmAaNaX8HQAAAABJRU5ErkJggg==">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@600;700;800&family=Spectral:wght@400;600;700&display=swap" rel="stylesheet">
@@ -53,7 +55,7 @@
 
 <h2>What this tool is</h2>
 <p>The Endurance Planner estimates where a crewed survey vessel can operate productively. A work area within fuel range may still be unusable if reaching it consumes most of the deployment. The tool turns that tradeoff into a picture: an interactive globe shaded by operational reach, a site checker for any point in the ocean, a survey planner that prices a drawn polygon in deployments and calendar days, and a one click report suitable for printing.</p>
-<p>It is a single HTML file. Everything runs locally in the browser tab, nothing is uploaded anywhere, and it works offline apart from three optional live map layers. It opens with a representative configuration; the first thing to do is set the numbers to the vessel actually under evaluation.</p>
+<p>It is a single HTML file. Everything runs locally in the browser tab and nothing you load is ever uploaded. Three optional live map layers and the web fonts need the internet; the rest works without it. It opens with a representative configuration; the first thing to do is set the numbers to the vessel actually under evaluation.</p>
 
 <h2>The core idea</h2>
 <p>The model is deliberately simple so results can be checked by hand. The vessel transits at a set speed, so one transit day covers a fixed distance. Each deployment runs a fixed number of days port to port, less any weather margin held back. A minimum share of each deployment, 50% by default, must be spent on station for the deployment to count as productive. Whatever remains is the transit allowance, capped by fuel range. Every point in the ocean is then scored against its nearest ports along great circle tracks, and the globe is shaded with one of four outcomes:</p>
