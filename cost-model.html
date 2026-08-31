@@ -1344,8 +1344,9 @@ function vesselJson() {
   var lines = [];
   SECTIONS.forEach(function (sec) {
     sec.items.forEach(function (it) {
-      lines.push({ section: sec.name, name: it.name, lo: it.lo, hi: it.hi,
-                   on: !!it.on, n: it.n, qty: it.qty, aboard: !!it.aboard });
+      lines.push({ section: sec.name, name: it.name, driver: it.driver, unit: it.unit,
+                   lo: it.lo, hi: it.hi, on: !!it.on, svy: !!it.svy,
+                   n: it.n, qty: it.qty, aboard: !!it.aboard, altXbt: !!it.altXbt });
     });
   });
   var params = {};
@@ -1371,18 +1372,40 @@ function applyVessel(obj) {
     if (typeof obj.params[k] === "number") state.params[k] = obj.params[k];
   });
   if (Array.isArray(obj.lines)) {
-    var byName = {};
+    var byName = {}, seen = {};
     obj.lines.forEach(function (r) { byName[r.section + "\u0000" + r.name] = r; });
     SECTIONS.forEach(function (sec) {
       sec.items.forEach(function (it) {
-        var r = byName[sec.name + "\u0000" + it.name];
+        var key = sec.name + "\u0000" + it.name, r = byName[key];
         if (!r) return;
+        seen[key] = true;
         if (typeof r.lo === "number") it.lo = r.lo;
         if (typeof r.hi === "number") it.hi = r.hi;
         if (typeof r.on === "boolean") it.on = r.on;
+        if (typeof r.svy === "boolean") it.svy = r.svy;
         if (typeof r.n === "number") it.n = r.n;
         if (typeof r.qty === "number") it.qty = r.qty;
         if (typeof r.aboard === "boolean") it.aboard = r.aboard;
+      });
+    });
+    /* lines the file has that this tool has never seen: custom lines someone added
+       before saving. Rebuild them rather than dropping them silently. */
+    var bySection = {};
+    SECTIONS.forEach(function (sec) { bySection[sec.name] = sec; });
+    obj.lines.forEach(function (r) {
+      var key = r.section + "\u0000" + r.name;
+      if (seen[key]) return;
+      var sec = bySection[r.section];
+      if (!sec || !r.name || !r.driver) return;
+      if (!DRIVERS[r.driver]) return;   /* unknown driver from a newer or hand-edited file: skip rather than crash */
+      if (sec.items.some(function (it) { return it.name === r.name; })) return;
+      sec.items.push({
+        name: r.name, driver: r.driver, unit: r.unit || "ea",
+        lo: Number(r.lo) || 0, hi: Number(r.hi) || 0,
+        on: r.on !== false, svy: !!r.svy,
+        n: typeof r.n === "number" ? r.n : undefined,
+        qty: typeof r.qty === "number" ? r.qty : undefined,
+        aboard: !!r.aboard, altXbt: !!r.altXbt
       });
     });
   }
