@@ -272,15 +272,7 @@
       </div>
     </fieldset>
 
-    <div class="row">
-      <span class="lbl">Output name:</span> <input type="text" id="fname" class="wide" style="max-width:340px" value="coverage">
-    </div>
-
-    <div class="row" style="margin-top:14px">
-      <button class="go" id="go">Build coverage polygon</button>
-    </div>
-    <progress id="prog" value="0" max="1" class="hidden"></progress>
-    <div id="runErr"></div>
+    
   </div>
 
   <div class="card hidden" id="boundaryCard">
@@ -322,7 +314,29 @@
         <span class="desc">A row per selected feature, with mapped area and share. Use when you need to say how much sits in each country's zone.</span></label>
       <label class="radio"><input type="radio" name="repMode" value="both"> Both
         <span class="desc">The total plus the per region table. This is the usual choice for a report.</span></label>
+      <div class="row indent" id="groupRow">
+        <span class="lbl">Group the table by:</span>
+        <select id="repGroup" style="max-width:260px">
+          <option value="feature">Each zone separately</option>
+          <option value="sovereign">Sovereign state, US zones combined</option>
+          <option value="both">Both, sovereign totals then each zone</option>
+        </select>
+      </div>
+      <label class="check"><input type="checkbox" id="repOutside" checked> Include a row for everything outside the selected boundaries
+        <span class="desc">Mapped area that falls in none of the selected zones. With every EEZ selected this is the high seas figure.</span></label>
     </fieldset>
+  </div>
+
+  <div class="card hidden" id="runCard">
+    <div class="row">
+      <span class="lbl">Output name:</span> <input type="text" id="fname" class="wide" style="max-width:340px" value="coverage">
+    </div>
+
+    <div class="row" style="margin-top:14px">
+      <button class="go" id="go">Build coverage polygon</button>
+    </div>
+    <progress id="prog" value="0" max="1" class="hidden"></progress>
+    <div id="runErr"></div>
   </div>
 
   <div class="card hidden" id="outCard">
@@ -1723,6 +1737,42 @@ function drawClipMap() {
   }
 }
 
+
+/* region rows honour the grouping choice and the outside row.
+   Overlapping claims mean a cell can sit in two zones, so sovereign totals
+   are the union of that sovereign's zones would require a second pass; the
+   sum here is stated as such in the note under the table. */
+function buildRegionRows(cs){
+  var mode = $('repGroup') ? $('repGroup').value : 'feature';
+  var out = [];
+  function push(name, cells, kind){ out.push({ name:name, cells:cells, kind:kind||'zone' }); }
+  if (mode === 'sovereign' || mode === 'both'){
+    var bySov = {};
+    cs.regions.forEach(function(r){
+      var k = r.sov || r.name;
+      if (!bySov[k]) bySov[k] = { name:k, cells:0, kids:[] };
+      bySov[k].cells += r.cells;
+      bySov[k].kids.push(r);
+    });
+    Object.keys(bySov).map(function(k){ return bySov[k]; })
+      .sort(function(a,b){ return b.cells - a.cells; })
+      .forEach(function(s){
+        push(s.name, s.cells, 'sovereign');
+        if (mode === 'both' && s.kids.length > 1){
+          s.kids.slice().sort(function(a,b){ return b.cells - a.cells; })
+            .forEach(function(r){ push('   ' + r.name, r.cells, 'child'); });
+        }
+      });
+  } else {
+    cs.regions.slice().sort(function(a,b){ return b.cells - a.cells; })
+      .forEach(function(r){ push(r.name, r.cells); });
+  }
+  if ($('repOutside') && $('repOutside').checked && cs.dataOutside > 0){
+    push('Outside the selected boundaries', cs.dataOutside, 'outside');
+  }
+  return out;
+}
+
 function syncBoundaryUI(){
   var on = !!boundary;
   $('reportModeSet').classList.toggle('hidden', !on);
@@ -1846,7 +1896,7 @@ function decodeEezPack(pack){
       for(var k=0;k<cnt;k++){ px+=rd(); py+=rd(); ring[k]=[px*q, py*q]; }
       rings.push(ring);
     });
-    feats.push({ rings: rings, bbox: fm.b, name: fm.n, sel: false });
+    feats.push({ rings: rings, bbox: fm.b, name: fm.n, sov: fm.s || null, ptype: fm.t || null, sel: false });
   });
   return feats;
 }
@@ -1912,6 +1962,9 @@ function finishEez(){
   }catch(e){ $('clipStatus').innerHTML='<span style="color:#a33">'+esc(e.message)+'</span>'; }
 }
 $('clipSearch').addEventListener('input', function(){ renderClipList(); });
+['repGroup','repOutside'].forEach(function(id){ if($(id)) $(id).addEventListener('change', function(){
+  if (window.__lastRun && window.__lastRun.rerender) window.__lastRun.rerender();
+}); });
 $('clipHighSeas').addEventListener('click', function(){
   if(!boundary) return;
   boundary.features.forEach(function(f){ f.sel=true; });
@@ -1943,7 +1996,7 @@ $('clipMap').addEventListener('click', function (ev) {
 });
 
 function loadFile(file) {
-  clear(adviceEl); clear(runErrEl); outCard.classList.add('hidden'); $('boundaryCard').classList.add('hidden');
+  clear(adviceEl); clear(runErrEl); outCard.classList.add('hidden'); $('boundaryCard').classList.add('hidden'); $('runCard').classList.add('hidden');
   currentName = file.name.replace(/\.[^.]+$/, '');
   $('fname').value = currentName + '_coverage';
   var lower = file.name.toLowerCase();
@@ -2049,6 +2102,7 @@ function describe(img) {
   auditNoData(img);
   syncNdSummary();
   $('boundaryCard').classList.remove('hidden');
+  $('runCard').classList.remove('hidden');
 }
 
 /* ---------- run ---------- */
@@ -2116,11 +2170,12 @@ function run() {
         var m1 = rasterizeBoundary(fr, PW, PH, procAff);
         var rc = 0;
         for (var z = 0; z < m1.length; z++){ if (m1[z]){ if (mask[z]) rc++; if (!inB) {} } }
-        regionCounts.push({ name: ft.name, cells: rc });
+        regionCounts.push({ name: ft.name, sov: ft.sov || ft.name, cells: rc });
         if (!inB) inB = m1;
         else for (var z2 = 0; z2 < inB.length; z2++) if (m1[z2]) inB[z2] = 1;
       });
       var invert = $('clipInvert').checked;
+      var dataTotalPre = built.count;   /* data cells before the clip narrows the mask */
       var bCells = 0, kept = 0, q, want;
       for (q = 0; q < mask.length; q++) {
         if (inB[q]) bCells++;
@@ -2131,6 +2186,7 @@ function run() {
       if (!kept) throw new Error(invert ? 'No data cells fall outside the boundary.' : 'No data cells fall inside the boundary.');
       var extends0 = false;
       clipStats = { boundaryCells: invert ? (PW * PH - bCells) : bCells, dataCellsIn: kept,
+        dataOutside: dataTotalPre - kept,
                     name: boundary.label + ', ' + selFeats.length + ' feature' + (selFeats.length === 1 ? '' : 's') + (invert ? ' (outside)' : ''), pixRings: bRings.map(function (ring) {
                       var det = procAff.a * procAff.e - procAff.b * procAff.d;
                       return ring.map(function (p) {
@@ -2316,20 +2372,24 @@ function run() {
         td.textContent = h; hd.appendChild(td);
       });
       rt.appendChild(hd);
-      var rows = clipStats.regions.slice().sort(function (a, b) { return b.cells - a.cells; });
+      var rows = buildRegionRows(clipStats);
       var totIn = clipStats.dataCellsIn;
       rows.forEach(function (r) {
         var tr = document.createElement('tr');
-        [r.name, (r.cells * cellAreaKm2).toFixed(1), totIn ? (100 * r.cells / totIn).toFixed(1) + '%' : ''].forEach(function (v, ci) {
+        var denom = (r.kind === 'outside') ? (totIn + clipStats.dataOutside) : totIn;
+        [r.name, (r.cells * cellAreaKm2).toFixed(1), denom ? (100 * r.cells / denom).toFixed(1) + '%' : ''].forEach(function (v, ci) {
           var td = document.createElement('td');
-          td.style.cssText = 'padding:4px 10px;border-bottom:1px solid var(--line)' + (ci ? ';text-align:right;font-variant-numeric:tabular-nums' : '');
+          td.style.cssText = 'padding:4px 10px;border-bottom:1px solid var(--line)' + (ci ? ';text-align:right;font-variant-numeric:tabular-nums' : '')
+            + (r.kind === 'sovereign' ? ';font-weight:700' : '')
+            + (r.kind === 'child' ? ';color:var(--muted)' : '')
+            + (r.kind === 'outside' ? ';font-style:italic;color:var(--muted)' : '');
           td.textContent = v; tr.appendChild(td);
         });
         rt.appendChild(tr);
       });
-      $('regionNote').textContent = 'Where claims overlap or joint regimes apply, a cell can count toward more than one region, so shares can sum past 100 percent.';
+      $('regionNote').textContent = 'Where claims overlap or joint regimes apply, a cell can count toward more than one zone, so shares can sum past 100 percent. Sovereign totals add their zones and inherit that double counting.' + (clipStats.dataOutside > 0 ? ' The outside row is mapped area in none of the selected zones, measured against the whole raster.' : '');
       $('regionWrap').classList.remove('hidden');
-      lastRun.regions = rows.map(function (r) { return { name: r.name, km2: r.cells * cellAreaKm2, pct: totIn ? 100 * r.cells / totIn : 0 }; });
+      lastRun.regions = rows.map(function (r) { var dn = (r.kind==='outside') ? (totIn + clipStats.dataOutside) : totIn; return { name: r.name, km2: r.cells * cellAreaKm2, pct: dn ? 100 * r.cells / dn : 0, kind: r.kind }; });
     }
     if (clipStats) {
       var clipLine = 'Clipped to ' + esc(clipStats.name) + '. The CSV carries the boundary coverage figures.';
@@ -2364,9 +2424,10 @@ function run() {
     if (clipStats) {
       if (clipStats.regions && repMode() !== 'total' && clipStats.regions.length >= 1 && cellAreaKm2 !== null) {
         csv += '\nregion,mapped km2 cell basis,share of clipped total pct\n';
-        clipStats.regions.slice().sort(function (a, b) { return b.cells - a.cells; }).forEach(function (r) {
-          csv += r.name.replace(/,/g, ';') + ',' + (r.cells * cellAreaKm2).toFixed(2) + ',' +
-                 (clipStats.dataCellsIn ? (100 * r.cells / clipStats.dataCellsIn).toFixed(2) : '') + '\n';
+        buildRegionRows(clipStats).forEach(function (r) {
+          var dn = (r.kind === 'outside') ? (clipStats.dataCellsIn + clipStats.dataOutside) : clipStats.dataCellsIn;
+          csv += r.name.trim().replace(/,/g, ';') + ',' + (r.cells * cellAreaKm2).toFixed(2) + ',' +
+                 (dn ? (100 * r.cells / dn).toFixed(2) : '') + '\n';
         });
       }
       csv += '\nclip boundary,' + clipStats.name.replace(/,/g, ';') +

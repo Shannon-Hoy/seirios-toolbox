@@ -7,7 +7,7 @@
 <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC+0lEQVR4nO2Xy27TQBSG/3NmnMS5NqRQlUJE6QIWCAFSl1S8AwsknoFXYMWWt2DNmhUsKrFAgIQAgcpVpdya3uK0iRPbM4dFHCkqTkuiygiJXxppZFvzfz6XGZswJLV0W5CCzPIdGsw5bfP9Xpy2+X4I+hvmw+LDH/kPkCzNCE9W7BoAEDBxGscGGJhVXNk+PyNfAYA4TQDqm81WbKNelV4MZdMEsABwegredNGqSY0nBhAhIkDmKhKVctAAhIjSSQERRLFEAtBc1WbcDBwAFBlxFCPsw0AwRlEmAlB/IcsEoxiRYkRaScAEs1i3L7MafjGLLCxEMaKrC+aJoxACIBFQfwmAiGQwxgKQ/kJsBcpYaGOhI0MZY6HfNbh+czF8crwopRNllG8thY+9LrnWQjkKvWEzEaHBGAWQuBVPubI1XcDWTFmaJ8rSnSnBThfEOZa3bikr7tmanc9mOKc1I6MV1r1g11XiGosoEO75ATqej92NNnnfmtx53yD1+jvPfdmh+f1eOomqkpfmqWPYPlmRXq0gKGXFyWloI7CbbWpNF8mbK6jcnh8GDz7IM2OUtAOYpk+26RM3fcpst5H3fKq1unSmE6IQRMgmeSUCrG7xwuoWFpLunZuxb29cNh8dLcSs5dMGgntPnWujQnyYkovwtwJEqBlhvSqfL8zajbuPnIsKJvfwLVbe/FTl65ei5WpeNh2FQDFCRWSYYYlgBxvXKCVGQAQswG/NtNOh6v0Xeh4AFKPdM5Dna3zl1Q/uEiChQSZe4Y8bMRFglHZ7mBq8UWCo5/kkzLCRgWMFE+2K4+6EIgKIgDqBdDyflLXgw8J8lADEsdmOT61WF06fCiP7HIAQILW8NI4CAIiz22hRq9WNW4sOBCABqOlz7UgABl6rO9TdC8gFAPmDBBiRxBoZ/zSM072yzu5elwox1kEROFBjdUEfgBgQrKxzvR1SEYgrMzWA+GBp7NHs0OWJI/DvfhUfGcDwj2LaMst3iAeTv2EODKUgTYhhr18MrmAaNaX8HQAAAABJRU5ErkJggg==">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<rect width=%2264%22 height=%2264%22 rx=%2211%22 fill=%22#033E7D%22/><circle cx=%2232%22 cy=%2232%22 r=%2219.5%22 fill=%22none%22 stroke=%22#c6af75%22 stroke-width=%223.4%22/><path d=%22M41.4 22.6 L34.9 32 L41.4 41.4 L32 34.9 L22.6 41.4 L29.1 32 L22.6 22.6 L32 29.1 Z%22 fill=%22#c6af75%22/><path d=%22M32 1.5 L36.4 27.6 L62.5 32 L36.4 36.4 L32 62.5 L27.6 36.4 L1.5 32 L27.6 27.6 Z%22 fill=%22#c6af75%22/><circle cx=%2232%22 cy=%2232%22 r=%222.9%22 fill=%22#033E7D%22/></svg>">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&family=Spectral:wght@400;600;700&display=swap" rel="stylesheet">
@@ -434,6 +434,10 @@ header{position:relative;overflow:hidden;color:#fff;padding:26px 28px 22px;
     <div class="panel" style="margin-top:14px">
       <h2>Survey report</h2>
       <div id="areaOut"><div class="probe-empty">Use Draw area, click at least three points on the globe, then press Finish, double click, or right click. You get area, transit, days on station, coverage rate, and how many deployments the polygon costs.</div></div>
+      <div id="footExport" style="display:none;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);gap:10px;flex-wrap:wrap">
+        <button id="btnExportFoot">Export report</button>
+        <button id="btnSendCostFoot">Send to Cost Model</button>
+      </div>
     </div>
 
     <div class="panel" style="margin-top:14px">
@@ -3763,27 +3767,41 @@ challenge_text() + "</div></div>";
       CAMP.length + ' area' + (CAMP.length === 1 ? '' : 's') + ' are in the section above.</div>';
     return html.slice(0, at) + sec + newHead + html.slice(at + marker.length);
   }
-  /* the report is long, so repeat the export control at the foot of it */
+  /* The report is long, so repeat the export controls at its foot. These live outside
+     #areaOut on purpose: that element is rewritten on every render and its innerHTML is
+     captured into the exported report, so buttons inside it would vanish or get printed. */
   function addFootExport() {
     var out = document.getElementById('areaOut');
-    if (!out || out.querySelector('.footexport')) return;
-    if (!out.querySelector('table') && !out.querySelector('.bignum')) return;
-    var d = document.createElement('div');
-    d.className = 'footexport';
-    d.style.cssText = 'margin-top:18px;padding-top:14px;border-top:1px solid var(--line);display:flex;gap:10px;flex-wrap:wrap';
-    var b1 = document.createElement('button');
-    b1.textContent = 'Export report';
-    b1.addEventListener('click', function () { var t = document.getElementById('btnExport'); if (t) t.click(); });
-    var b2 = document.createElement('button');
-    b2.textContent = 'Send to Cost Model';
-    b2.addEventListener('click', function () { var t = document.getElementById('btnSendCost'); if (t) t.click(); });
-    d.appendChild(b1); d.appendChild(b2);
-    out.appendChild(d);
+    var foot = document.getElementById('footExport');
+    if (!out || !foot) return;
+    var hasReport = !!(out.querySelector('table') || out.querySelector('.bignum'));
+    foot.style.display = hasReport ? 'flex' : 'none';
+  }
+  function wireFootExport() {
+    var pairs = [['btnExportFoot', 'btnExport'], ['btnSendCostFoot', 'btnSendCost']];
+    pairs.forEach(function (pr) {
+      var b = document.getElementById(pr[0]);
+      if (b && !b._wired) {
+        b._wired = true;
+        b.addEventListener('click', function () { var t = document.getElementById(pr[1]); if (t) t.click(); });
+      }
+    });
   }
   if (typeof renderAreaReport === 'function') {
     var _origAR = renderAreaReport;
-    renderAreaReport = function () { _origAR.apply(this, arguments); try { addFootExport(); } catch (e) {} };
+    renderAreaReport = function () { _origAR.apply(this, arguments); try { wireFootExport(); addFootExport(); } catch (e) {} };
   }
+  /* Watch #areaOut directly rather than trusting the render hook. Other code also wraps
+     renderAreaReport, and wrapper order is not guaranteed, so an observer is the reliable path. */
+  function watchFootExport() {
+    wireFootExport(); addFootExport();
+    var out = document.getElementById('areaOut');
+    if (!out || !window.MutationObserver) return;
+    new MutationObserver(function () { try { addFootExport(); } catch (e) {} })
+      .observe(out, { childList: true, subtree: true });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watchFootExport);
+  else watchFootExport();
   function hookExport() {
     var btnE = document.getElementById('btnExport');
     if (!btnE) return;

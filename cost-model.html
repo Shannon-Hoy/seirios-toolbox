@@ -7,7 +7,7 @@
 <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC+0lEQVR4nO2Xy27TQBSG/3NmnMS5NqRQlUJE6QIWCAFSl1S8AwsknoFXYMWWt2DNmhUsKrFAgIQAgcpVpdya3uK0iRPbM4dFHCkqTkuiygiJXxppZFvzfz6XGZswJLV0W5CCzPIdGsw5bfP9Xpy2+X4I+hvmw+LDH/kPkCzNCE9W7BoAEDBxGscGGJhVXNk+PyNfAYA4TQDqm81WbKNelV4MZdMEsABwegredNGqSY0nBhAhIkDmKhKVctAAhIjSSQERRLFEAtBc1WbcDBwAFBlxFCPsw0AwRlEmAlB/IcsEoxiRYkRaScAEs1i3L7MafjGLLCxEMaKrC+aJoxACIBFQfwmAiGQwxgKQ/kJsBcpYaGOhI0MZY6HfNbh+czF8crwopRNllG8thY+9LrnWQjkKvWEzEaHBGAWQuBVPubI1XcDWTFmaJ8rSnSnBThfEOZa3bikr7tmanc9mOKc1I6MV1r1g11XiGosoEO75ATqej92NNnnfmtx53yD1+jvPfdmh+f1eOomqkpfmqWPYPlmRXq0gKGXFyWloI7CbbWpNF8mbK6jcnh8GDz7IM2OUtAOYpk+26RM3fcpst5H3fKq1unSmE6IQRMgmeSUCrG7xwuoWFpLunZuxb29cNh8dLcSs5dMGgntPnWujQnyYkovwtwJEqBlhvSqfL8zajbuPnIsKJvfwLVbe/FTl65ei5WpeNh2FQDFCRWSYYYlgBxvXKCVGQAQswG/NtNOh6v0Xeh4AFKPdM5Dna3zl1Q/uEiChQSZe4Y8bMRFglHZ7mBq8UWCo5/kkzLCRgWMFE+2K4+6EIgKIgDqBdDyflLXgw8J8lADEsdmOT61WF06fCiP7HIAQILW8NI4CAIiz22hRq9WNW4sOBCABqOlz7UgABl6rO9TdC8gFAPmDBBiRxBoZ/zSM072yzu5elwox1kEROFBjdUEfgBgQrKxzvR1SEYgrMzWA+GBp7NHs0OWJI/DvfhUfGcDwj2LaMst3iAeTv2EODKUgTYhhr18MrmAaNaX8HQAAAABJRU5ErkJggg==">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<rect width=%2264%22 height=%2264%22 rx=%2211%22 fill=%22#033E7D%22/><circle cx=%2232%22 cy=%2232%22 r=%2219.5%22 fill=%22none%22 stroke=%22#c6af75%22 stroke-width=%223.4%22/><path d=%22M41.4 22.6 L34.9 32 L41.4 41.4 L32 34.9 L22.6 41.4 L29.1 32 L22.6 22.6 L32 29.1 Z%22 fill=%22#c6af75%22/><path d=%22M32 1.5 L36.4 27.6 L62.5 32 L36.4 36.4 L32 62.5 L27.6 36.4 L1.5 32 L27.6 27.6 Z%22 fill=%22#c6af75%22/><circle cx=%2232%22 cy=%2232%22 r=%222.9%22 fill=%22#033E7D%22/></svg>">
+
 <style>
   :root {
     --navy: #0b3d66; --navy-dark: #072a47; --blue: #1a6fb5; --teal: #0e7f8c;
@@ -88,8 +88,16 @@ header{position:relative;overflow:hidden;color:#fff;padding:26px 28px 22px;
   .secband button { background: rgba(255,255,255,.15); color: #fff; border: 0; border-radius: 5px; font-size: 12px; padding: 3px 10px; cursor: pointer; }
   .secband button:hover { background: rgba(255,255,255,.3); }
   button.rm { background: none; border: 0; color: var(--err); cursor: pointer; font-size: 14px; padding: 0 4px; }
-  button.sm { font: inherit; font-size: 13px; background: #eef4f9; color: var(--navy); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; cursor: pointer; }
-  button.sm:hover { background: #dfeaf3; }
+  button.sm, label.sm { font: inherit; font-size: 13px; background: #eef4f9; color: var(--navy); border: 1px solid var(--line);
+    border-radius: 6px; padding: 6px 12px; cursor: pointer; display: inline-block; line-height: 1.3;
+    white-space: nowrap; vertical-align: middle; }
+  button.sm:hover, label.sm:hover { background: #dfeaf3; }
+  label.sm:active, button.sm:active { transform: translateY(1px); }
+  /* the primary action on a fresh page: nothing computes until a configuration is loaded */
+  .sm.primary { background: var(--gold); border-color: var(--gold-deep); color: #22314a; font-weight: 700;
+    box-shadow: 0 1px 3px rgba(143,120,56,.30); }
+  .sm.primary:hover { background: #d3bf90; }
+  .sm.primary::before { content: "\2191"; margin-right: 6px; font-weight: 700; }
   .toggles { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; font-size: 13.5px; margin-top: 4px; }
   .toggles label { display: flex; align-items: center; gap: 7px; cursor: pointer; }
   .results { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 10px; }
@@ -123,7 +131,7 @@ header{position:relative;overflow:hidden;color:#fff;padding:26px 28px 22px;
   .stepnum { position: absolute; top: -11px; left: 16px; width: 24px; height: 24px; border-radius: 50%;
              background: var(--navy); color: #fff; font-size: 13px; font-weight: 700;
              display: flex; align-items: center; justify-content: center; }
-  .sm.primary { background: var(--gold); border-color: var(--gold); color: #22314a; font-weight: 700; }
+
   #configNote.warn { background: #fff8e6; border: 1px solid var(--gold); border-left: 3px solid var(--gold);
                      border-radius: 8px; padding: 12px 15px; color: var(--ink); font-size: 13.5px; }
   a.dl, button.dl { display: inline-block; margin: 12px 10px 0 0; font-weight: 600; background: var(--ok); color: #fff; text-decoration: none; border: 0; border-radius: 8px; padding: 10px 20px; font-size: 14px; cursor: pointer; font-family: inherit; }

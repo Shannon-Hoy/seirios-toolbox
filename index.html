@@ -8,7 +8,7 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="description" content="Browser-based planning and data tools for ocean mapping. Nothing is uploaded; everything runs on your machine.">
-<rect width=%2264%22 height=%2264%22 rx=%2211%22 fill=%22#033E7D%22/><circle cx=%2232%22 cy=%2232%22 r=%2219.5%22 fill=%22none%22 stroke=%22#c6af75%22 stroke-width=%223.4%22/><path d=%22M41.4 22.6 L34.9 32 L41.4 41.4 L32 34.9 L22.6 41.4 L29.1 32 L22.6 22.6 L32 29.1 Z%22 fill=%22#c6af75%22/><path d=%22M32 1.5 L36.4 27.6 L62.5 32 L36.4 36.4 L32 62.5 L27.6 36.4 L1.5 32 L27.6 27.6 Z%22 fill=%22#c6af75%22/><circle cx=%2232%22 cy=%2232%22 r=%222.9%22 fill=%22#033E7D%22/></svg>">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&family=Spectral:wght@400;600&display=swap" rel="stylesheet">
@@ -169,7 +169,7 @@ var UTILITIES = [
   { file:'nodata-fixer.html', title:'NoData Fixer',
     desc:'Repairs rasters that write empty cells as zero, which render as a flat sea-level plane instead of a gap. Common in multibeam mosaics pulled from the NCEI Bathymetry Viewer. Reprojects on output and exports GeoTIFF or Arc ASCII. Formerly the Bathy Grid Converter.' },
   { file:'raster-coverage-polygon.html', title:'Raster Coverage Polygon',
-    desc:'Turns rasters into coverage polygons with a statistics report. Takes image and elevation rasters plus XYZ point files binned to a grid, and reprojects on output. Clip to the built-in World EEZ v12 to report area inside a zone, broken out by region, or invert it for the high seas.' },
+    desc:'Turns rasters into coverage polygons with a statistics report. Takes image and elevation rasters plus XYZ point files binned to a grid, and reprojects on output. Clip to the built-in World EEZ v12 to report area inside a zone, broken out by region or by sovereign state, or invert it for the high seas.' },
   { file:'coordinate-converter.html', title:'Coordinate Converter',
     desc:'Paste coordinates in any common format, or drop a text file, and get decimal degrees, degrees minutes, degrees minutes seconds, and UTM with the zone and EPSG code. Click the map to find a zone, or to place easting and northing data.' },
   { file:'grid-decimator.html', title:'Grid Decimator', soon:true,
